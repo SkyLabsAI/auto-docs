@@ -1,0 +1,3 @@
+[submodule "sphinx/alectryon"]
+	path = sphinx/alectryon
+	url = git@github.com:cpitclaudel/alectryon.git

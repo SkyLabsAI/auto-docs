@@ -1,0 +1,14 @@
+#
+# Makefile: default configuration
+#
+# Copyright (C) 2020 BlueRock Security, Inc.
+# All rights reserved.
+#
+# SPDX-License-Identifier: LGPL-2.1 WITH BedRock Exception for use over network,
+# see repository root for details.
+#
+
+export BHV   ?= $(shell realpath ../bhv)
+export ROCQBIN ?= $(shell dirname $(shell which coqc))
+export ROCQLIB ?= $(shell coqc -where)
+export CPP2V  ?= $(BHV)/fmdeps/cpp2v-core/build/cpp2v

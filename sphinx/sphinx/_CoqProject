@@ -1,0 +1,11 @@
+-arg -w -arg -cannot-open-path
+-arg -w -arg -notation-overridden
+-arg -w -arg -custom-entry-overridden
+-arg -w -arg -notation-incompatible-prefix
+# Only appropriate for documentation
+-arg -w -arg -non-recursive
+-arg -w -arg -require-in-section
+-arg -w -arg +deprecated-from-Coq
+-arg -w -arg +deprecated-missing-stdlib
+-Q ../src ""
+
