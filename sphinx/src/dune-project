@@ -1,0 +1,35 @@
+(lang dune 3.17)
+(using coq 0.10)
+(name rocq-bluerock-brick-docs)
+
+(generate_opam_files)
+
+(license LicenseRef-LICENSE-BedRock)
+
+(maintainers
+ "Gregory Malecha <gregory@bluerock.io>"
+ "Jan-Oliver Kaiser <janno@bluerock.io>"
+ "Hai Dang <hai@bluerock.io>"
+ "Paolo Giarrusso <paolo@bluerock.io>"
+ "Simon Hudon <simon@bluerock.io>")
+(authors
+ "Gregory Malecha <gregory@bluerock.io>"
+ "Paolo Giarrusso <paolo@bluerock.io>"
+ "Jan-Oliver Kaiser <janno@bluerock.io>"
+ "Hai Dang <hai@bluerock.io>"
+ "Simon Hudon <simon@bluerock.io>")
+
+(source (gitlab bedrocksystems/cpp2v))
+
+(package
+ (name rocq-bluerock-brick-docs)
+ (allow_empty)
+ (synopsis "C++ verification examples using BlueRock BRiCk")
+ (depends
+  (rocq-bluerock-cpp2v (= dev))
+  elpi-cpp
+  coq-bluerock-auto-core
+  coq-bluerock-auto-cpp
+  rocq-bluerock-cpp-stdlib))
+
+(subst disabled)

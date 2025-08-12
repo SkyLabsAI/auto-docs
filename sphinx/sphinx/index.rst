@@ -16,6 +16,7 @@ This guide is *not* meant to teach research level depth in separation logic or p
    :maxdepth: 2
    :caption: Table of Contents
 
+   first_verification.rst
 
 Indices and tables
 ==================
