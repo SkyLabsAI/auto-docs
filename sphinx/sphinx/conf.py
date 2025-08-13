@@ -89,7 +89,7 @@ if 'ALECTRYON_DRIVER' in os.environ:
         alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqlsp"}
     else:
         raise ValueError('')
-
+alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqc_time"}
 
 # NOTE: Add in other entries here if we want to register coqdoc things which are
 #       compatible with the `:coqid:` role.
@@ -111,6 +111,7 @@ extensions = [
 
     # This extension supports output to pdf:
     'rst2pdf.pdfbuilder',
+    'myst_parser',
 
     # NOTE: These are the key extensions which enables our documentation efforts
     'alectryon.sphinx'

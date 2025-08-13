@@ -23,7 +23,6 @@ Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
 (*|
-
 Define AST `source` containing the code above: |*)
 cpp.prog source prog cpp:{{
   void test() { }
@@ -32,7 +31,7 @@ cpp.prog source prog cpp:{{
 (*|
 Some more setup is omitted for now.
 
-.. coq:: hide
+.. coq:: none
 |*)
 Section with_cpp.
   Context `{Σ : cpp_logic}.
@@ -43,12 +42,12 @@ Section with_cpp.
 Specifying the expected behavior
 --------------------------------
 
-We must first specify what the [test] function does.
+We must first specify what the `test()` function does.
  |*)
 cpp.spec "test()" from source as test_spec with
   (\post emp).
 (*|
-The `emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
+The `emp` tells you that the function doesn't return any resource, but we'll get into that more later.
 
 ----------------------
 Verifying the Function
@@ -59,7 +58,7 @@ Now, we can set up the verification by posing a `Lemma`.
 Lemma test_ok : verify[source] "test()".
 Proof.
 (*|
-This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any {{ "undefined behavior" | terminology }}.
+This sets up a theorem for our function that states that the function satisfies the specification. In this case, this means that executing the function will not produce any `undefined behavior <https://en.wikipedia.org/wiki/Undefined_behavior>`_.
 
 Since this is a particularly simple function, the proof is also simple. This proceeds in two stages:
 1. We use `verify_spec` to begin the proof: our goal becomes a goal about the concrete function body.
@@ -80,6 +79,6 @@ What's Next?
 
 Consider verifying some more simple functions including:
 
-.. coq:: hide
+.. coq:: none
  |*)
 End with_cpp.

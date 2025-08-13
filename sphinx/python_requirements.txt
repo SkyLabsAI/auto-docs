@@ -4,4 +4,5 @@ pygments==2.19.1
 sphinx==8.2.3
 sphinx-rtd-theme==3.0.2
 rst2pdf==0.102
-# alectryon
+#alectryon
+myst-parser
