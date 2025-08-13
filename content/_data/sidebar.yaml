@@ -21,3 +21,5 @@
   children:
     - title: Dealing with Missing Type Instances
       url: docs/common_errors/missing_type_instances.v
+    - title: Dealing with Missing Function Specs
+      url: docs/common_errors/missing_function_spec.v
