@@ -56,12 +56,34 @@ This proof gets stuck on the following goal:
     i_r |-> uintR 1$m v
 ```
 
-In this goal
-This goal is hard to read, but
-it is stuck because the automation cannot find
-we are missing `i_r |-> uintR 1$m v`.
+Here, the goal is a separating conjunction where the first conjunct is the
+program continuation (it involves a `wp`), and the second is the resource
+that the automation cannot find --- `i_r |-> uintR 1$m v`.
 
+To continue exploring our proof, we can try to add `wAdmit R` to continue; but eventually we need a proper fix.
 
+In cases like these, when the automation cannot find some resource `R`, it's for one of two reasons.
+
+- Either we forgot `R` from our precondition,
+- or we _do_ own `R` but it is hidden in some assumption `S` that the automation cannot unfold.
+
+In the first case, we can add `\pre R` to our function precondition.
+In the second case, we can either unfold `S` by hand, or add some unfolding hints.
+|*)
+
+(*|
+# If we are missing resources
+
+In the first case, we can unfold `S`
+# Find the resource in our context
+|*)
+(* TODO: elsewhere, explain anatomy of a goal, split in existentials and conjunctions. *)
+
+(*|
+When the automation ownership of some resource `R`, we either _do_ own `R`
+The right fix will be one of these options:
+- sometimes, we _do_ won `i_r |-> uintR 1$m v`.
+The usual fixes are as follows:
 |*)
 
 (*@HIDE@*)
