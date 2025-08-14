@@ -69,6 +69,9 @@ for src_path in coq_src_paths:
     sertop_args.extend(["-I", src_path])
 
 import alectryon.docutils
+import alectryon.core
+alectryon.core.DEFAULT_MARKUP = "md"
+alectryon.core.DEFAULT_DRIVERS["coq"] = "coqlsp"
 
 alectryon.docutils.LONG_LINE_THRESHOLD = 90
 alectryon.docutils.CACHE_DIRECTORY = os.path.abspath("cache/")
