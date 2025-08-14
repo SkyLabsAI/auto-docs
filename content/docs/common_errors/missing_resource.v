@@ -35,14 +35,12 @@ Section with_cpp.
 Tactic Notation "wAdmit" uconstr(R) := iAssert (R : mpred)%I as "-#?"%string; first admit.
 (*@END-HIDE@*)
 
-(*|
-When we start our proof, `verify?` complains that it can not find a specification of `missing_spec()`, so we're aware of the problem.
- |*)
 Lemma inc_i_ok : verify[source] inc_i.
 Proof.
   verify_spec.
   go.
 (*|
+This proof gets stuck on the following goal:
 ```coq
   _ : denoteModule source
   _ : type_ptr "unsigned int&" i_addr
@@ -54,15 +52,75 @@ Proof.
     (i_r |-> uintR 1$m (trim 32 (v + 1)) -∗
       interp source 1
         (wp_block source [region: "i" @ i_addr; return {?: "void"}] []
-          (Kcleanup source [] (Kreturn (λ v0 : ptr, ▷ _PostPred_ v0))))) ∗ i_r |-> uintR 1$m v
+          (Kcleanup source [] (Kreturn (λ v0 : ptr, ▷ _PostPred_ v0))))) ∗
+    i_r |-> uintR 1$m v
 ```
-This goal is hard to read, but it is stuck because we are missing `i_r |-> uintR 1$m v`.
+
+In this goal
+This goal is hard to read, but
+it is stuck because the automation cannot find
+we are missing `i_r |-> uintR 1$m v`.
+
+
 |*)
-(* Tactic Notation "wAdmit" uconstr(R) := iAssert (R) as "-#?"%string; first admit. *)
-(* wAdmit (∃ z, i_r |-> uintR 1$m z). *)
-(* wAdmit (∃ z, i_r |-> uintR 1$m z)%I. *)
+
+(*@HIDE@*)
+Import iris.proofmode.environments.
+Ltac clippy_goal E G :=
+  (* idtac G; *)
+  lazymatch G with
+  | bi_exist _ =>
+    (* idtac G; *)
+    idtac "Goal is an existential, using `iExists _` to progress";
+    iExists _
+  | bi_sep ?A ?B =>
+    idtac "you might need either " A " or " B;
+    iSplitL
+  | _ => idtac "backtrack"
+  end.
+
+Ltac clippy :=
+  lazymatch goal with
+  | |- envs_entails ?E ?G =>
+    (* idtac E G; *)
+    clippy_goal E G
+  | _ => idtac
+  end.
+(* Ltac clippy1 := iExists_. *)
+(* Succeed clippy1. *)
+(* Ltac clippy2 := *)
+(*   lazymatch goal with *)
+(*   | |- envs_entails _ (bi_exist _) => *)
+(*     idtac "iExists"; *)
+(*     iExists_ *)
+(*   | |- _ => idtac "backtrack" *)
+(*   end. *)
+(* Succeed clippy2. *)
+
+(*
+
+TODOs:
+- a better clippy could use TC search to inspect the goal more cleverly,
+  recognize and ignore the program continuation (wands and WPs), and suggest what's missing.
+- SkyLabs could provide AI assistance here
+
+
+ *)
+
+    Import MyPretty.
+    work.
+
+clippy.
+pretty.
+(*@END-HIDE@*)
+
 (* TODO: explain syntax of separation logic *)
+iExists 0%Z.
+wAdmit (i_r |-> uintR 1$m 0).
 wAdmit (Exists z, i_r |-> uintR 1$m z).
+wAdmit (Exists z, i_r |-> uintR 1$m z).
+clippy.
+clippy.
 (* TODO: explain syntax of separation logic *)
 (* iExists 0%Z. *)
 wAdmit (i_r |-> uintR 1$m 0).
@@ -100,5 +158,8 @@ go.
 Qed.
 (*@HIDE@*)
 End with_cpp.
+(* Tactic Notation "wAdmit" uconstr(R) := iAssert (R) as "-#?"%string; first admit. *)
+(* wAdmit (∃ z, i_r |-> uintR 1$m z). *)
+(* wAdmit (∃ z, i_r |-> uintR 1$m z)%I. *)
 (*@END-HIDE@*)
 
