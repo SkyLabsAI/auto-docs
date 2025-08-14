@@ -1,6 +1,6 @@
 #!/usr/bin/ python3
 ####################################################################################
-## Copyright (C) 2020 BlueRock Security, Inc.                                       ##
+## Copyright (C) 2025 BlueRock Security, Inc.                                     ##
 ## All rights reserved.                                                           ##
 ## SPDX-License-Identifier: LGPL-2.1 WITH BedRock Exception for use over network, ##
 ##                          see repository root for details.                      ##
@@ -71,7 +71,7 @@ for src_path in coq_src_paths:
 import alectryon.docutils
 import alectryon.core
 alectryon.core.DEFAULT_MARKUP = "md"
-alectryon.core.DEFAULT_DRIVERS["coq"] = "coqlsp"
+# alectryon.core.DEFAULT_DRIVERS["coq"] = "coqc_time"
 
 alectryon.docutils.LONG_LINE_THRESHOLD = 90
 alectryon.docutils.CACHE_DIRECTORY = os.path.abspath("cache/")
@@ -88,11 +88,11 @@ if 'ALECTRYON_DRIVER' in os.environ:
         alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "sertop_noexec"}
     elif driver == 'COQC_TIME':
         alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqc_time"}
-    elif driver == 'coqlsp':
+    else: # driver == 'coqlsp':
         alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqlsp"}
-    else:
-        raise ValueError('')
-alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqc_time"}
+    # else:
+    #     raise ValueError('')
+# alectryon.docutils.AlectryonTransform.LANGUAGE_DRIVERS = {"coq": "coqc_time"}
 
 # NOTE: Add in other entries here if we want to register coqdoc things which are
 #       compatible with the `:coqid:` role.

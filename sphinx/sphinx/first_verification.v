@@ -1,13 +1,12 @@
 (*|
-===========================
 Verifying a simple function
 ===========================
 
 Our first proof will be about a very simple function:
 
-.. c++::
-
-  void test() { }
+```c++
+void test() { }
+```
 
 This is trivial, but it lets us teach the basics about verification.
 
@@ -31,13 +30,14 @@ cpp.prog source prog cpp:{{
 (*|
 Some more setup is omitted for now.
 
-.. coq:: none
+<!--
 |*)
 Section with_cpp.
   Context `{Σ : cpp_logic}.
   Context `{MOD : source ⊧ σ}.
 
 (*|
+-->
 --------------------------------
 Specifying the expected behavior
 --------------------------------
@@ -46,6 +46,7 @@ We must first specify what the `test()` function does.
  |*)
 cpp.spec "test()" from source as test_spec with
   (\post emp).
+
 (*|
 The `emp` tells you that the function doesn't return any resource, but we'll get into that more later.
 
@@ -79,6 +80,7 @@ What's Next?
 
 Consider verifying some more simple functions including:
 
-.. coq:: none
+<!--
  |*)
 End with_cpp.
+(*| --> |*)
