@@ -7,15 +7,8 @@ Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
 Sometimes, a proof will get stuck because you are missing some
 {{ "resource" | terminology }}.
-For instance:
 
-```cpp
-void missing_spec() {}
-void test() {
-  missing_spec();
-}
-```
-
+To show this problem, we will try to verify the following `inc_i` function:
 |*)
 cpp.prog source prog cpp:{{
   void inc_i(unsigned int &i) {
@@ -23,22 +16,31 @@ cpp.prog source prog cpp:{{
   }
 }}.
 
+(*@HIDE@*)
+(* TODO upstream! *)
+
 Section with_cpp.
   Context `{Σ : cpp_logic}.
-  Context `{MOD : source ⊧ σ}.
+  Context {σ : genv}.
 
-  cpp.spec "inc_i(unsigned int &)" as inc_i with (
+(* TODO: add to proof prelude. *)
+Import linearity.
+
+Tactic Notation "wAdmit" uconstr(R) := iAssert (R : mpred)%I as "-#?"%string; first admit; rewrite ?bi.affinely_elim.
+(*@END-HIDE@*)
+
+(*|
+Assume we try proving this function fits the following (incorrect) spec.
+|*)
+Section with_inc_i.
+  cpp.spec "inc_i(unsigned int &)" from source as inc_i with (
     \arg{i_r} "i" (Vref i_r)
     \post emp).
 
-(* TODO upstream! *)
-Tactic Notation "wAdmit" uconstr(R) := iAssert (R : mpred)%I as "-#?"%string; first admit.
-(*@END-HIDE@*)
-
-Lemma inc_i_ok : verify[source] inc_i.
-Proof.
-  verify_spec.
-  go.
+  Lemma inc_i_ok : verify[source] inc_i.
+  Proof.
+    verify_spec.
+    go.
 (*|
 This proof gets stuck on the following goal:
 ```coq
@@ -58,130 +60,51 @@ This proof gets stuck on the following goal:
 
 Here, the goal is a separating conjunction where the first conjunct is the
 program continuation (it involves a `wp`), and the second is the resource
-that the automation cannot find --- `i_r |-> uintR 1$m v`.
+that the automation cannot find --- `i_r |-> uintR 1$m v`, that is ownership of the memory that `i_r` points to.
 
-To continue exploring our proof, we can try to add `wAdmit R` to continue; but eventually we need a proper fix.
+To continue exploring our proof, we can try to add `wAdmit R` to continue, even if eventually we need a proper fix.
 
 In cases like these, when the automation cannot find some resource `R`, it's for one of two reasons.
 
 - Either we forgot `R` from our precondition,
 - or we _do_ own `R` but it is hidden in some assumption `S` that the automation cannot unfold.
 
-In the first case, we can add `\pre R` to our function precondition.
+In the first case, we can add `\pre R` to our function precondition and restart our proof.
 In the second case, we can either unfold `S` by hand, or add some unfolding hints.
-|*)
 
+Coming back to our proof,
+|*)
+    wAdmit (Exists v, i_r |-> uintR 1$m v).
+    go.
 (*|
-# If we are missing resources
+Here, our proof ends up being stuck with an extra assumption;
+```coq
+  _ : i_r |-> uintR 1$m (trim 32 (v + 1))
+  --------------------------------------∗
+  emp
+```
 
-In the first case, we can unfold `S`
-# Find the resource in our context
+In this case, the proper fix is to add this assumption to the postconditions.
 |*)
-(* TODO: elsewhere, explain anatomy of a goal, split in existentials and conjunctions. *)
-
-(*|
-When the automation ownership of some resource `R`, we either _do_ own `R`
-The right fix will be one of these options:
-- sometimes, we _do_ won `i_r |-> uintR 1$m v`.
-The usual fixes are as follows:
-|*)
-
-(*@HIDE@*)
-Import iris.proofmode.environments.
-Ltac clippy_goal E G :=
-  (* idtac G; *)
-  lazymatch G with
-  | bi_exist _ =>
-    (* idtac G; *)
-    idtac "Goal is an existential, using `iExists _` to progress";
-    iExists _
-  | bi_sep ?A ?B =>
-    idtac "you might need either " A " or " B;
-    iSplitL
-  | _ => idtac "backtrack"
-  end.
-
-Ltac clippy :=
-  lazymatch goal with
-  | |- envs_entails ?E ?G =>
-    (* idtac E G; *)
-    clippy_goal E G
-  | _ => idtac
-  end.
-(* Ltac clippy1 := iExists_. *)
-(* Succeed clippy1. *)
-(* Ltac clippy2 := *)
-(*   lazymatch goal with *)
-(*   | |- envs_entails _ (bi_exist _) => *)
-(*     idtac "iExists"; *)
-(*     iExists_ *)
-(*   | |- _ => idtac "backtrack" *)
-(*   end. *)
-(* Succeed clippy2. *)
-
-(*
-
-TODOs:
-- a better clippy could use TC search to inspect the goal more cleverly,
-  recognize and ignore the program continuation (wands and WPs), and suggest what's missing.
-- SkyLabs could provide AI assistance here
-
-
- *)
-
-    Import MyPretty.
-    work.
-
-clippy.
-pretty.
-(*@END-HIDE@*)
-
-(* TODO: explain syntax of separation logic *)
-iExists 0%Z.
-wAdmit (i_r |-> uintR 1$m 0).
-wAdmit (Exists z, i_r |-> uintR 1$m z).
-wAdmit (Exists z, i_r |-> uintR 1$m z).
-clippy.
-clippy.
-(* TODO: explain syntax of separation logic *)
-(* iExists 0%Z. *)
-wAdmit (i_r |-> uintR 1$m 0).
-go.
-Abort.
-
+  Abort.
+End with_inc_i.
 
 (*|
 
-### Choice 1: Restart the proof
-
-just restart the proof.
-
-### Choice 2: Manually add to the context
-
-`wassume missing_spec_spec`?
-use `iAssert`
 |*)
+cpp.spec "inc_i(unsigned int &)" from source as inc_i_fixed with (
+  \arg{i_r} "i" (Vref i_r)
+  \pre{v} i_r |-> uintR 1$m v
+  \post i_r |-> uintR 1$m (trim 32 (v + 1))).
 
-iAssert (missing_spec_spec)%I as "-#?"%string; first admit.
-go.
-
-(*|
-## Solution #2: Mark the function for inlining
-
-If this function is trivial, or we don't want to write specification right now,
-we can also simply mark the function for inlining (see ... for more information).
-|*)
-cpp.spec "missing_spec()" inline.
-(*|
-Unlike with the previous solution, we do not need to add anything to the context and now `go` will continue past the function call finishing the proof in this case.
- |*)
-go.
-
+Lemma inc_i_ok : verify[source] inc_i_fixed.
+Proof.
+  verify_spec.
+  go.
 Qed.
+
 (*@HIDE@*)
+(* TODO: later, add pointers about (lazy) unfolding. *)
 End with_cpp.
-(* Tactic Notation "wAdmit" uconstr(R) := iAssert (R) as "-#?"%string; first admit. *)
-(* wAdmit (∃ z, i_r |-> uintR 1$m z). *)
-(* wAdmit (∃ z, i_r |-> uintR 1$m z)%I. *)
 (*@END-HIDE@*)
 
