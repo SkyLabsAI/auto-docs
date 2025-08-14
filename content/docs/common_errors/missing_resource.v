@@ -30,6 +30,9 @@ Section with_cpp.
   cpp.spec "inc_i(unsigned int &)" as inc_i with (
     \arg{i_r} "i" (Vref i_r)
     \post emp).
+
+(* TODO upstream! *)
+Tactic Notation "wAdmit" uconstr(R) := iAssert (R : mpred)%I as "-#?"%string; first admit.
 (*@END-HIDE@*)
 
 (*|
@@ -55,10 +58,46 @@ Proof.
 ```
 This goal is hard to read, but it is stuck because we are missing `i_r |-> uintR 1$m v`.
 |*)
-iExists _.
-iSplit.
+(* Tactic Notation "wAdmit" uconstr(R) := iAssert (R) as "-#?"%string; first admit. *)
+(* wAdmit (∃ z, i_r |-> uintR 1$m z). *)
+(* wAdmit (∃ z, i_r |-> uintR 1$m z)%I. *)
+(* TODO: explain syntax of separation logic *)
+wAdmit (Exists z, i_r |-> uintR 1$m z).
+(* TODO: explain syntax of separation logic *)
+(* iExists 0%Z. *)
+wAdmit (i_r |-> uintR 1$m 0).
+go.
 Abort.
 
+
+(*|
+
+### Choice 1: Restart the proof
+
+just restart the proof.
+
+### Choice 2: Manually add to the context
+
+`wassume missing_spec_spec`?
+use `iAssert`
+|*)
+
+iAssert (missing_spec_spec)%I as "-#?"%string; first admit.
+go.
+
+(*|
+## Solution #2: Mark the function for inlining
+
+If this function is trivial, or we don't want to write specification right now,
+we can also simply mark the function for inlining (see ... for more information).
+|*)
+cpp.spec "missing_spec()" inline.
+(*|
+Unlike with the previous solution, we do not need to add anything to the context and now `go` will continue past the function call finishing the proof in this case.
+ |*)
+go.
+
+Qed.
 (*@HIDE@*)
 End with_cpp.
 (*@END-HIDE@*)
