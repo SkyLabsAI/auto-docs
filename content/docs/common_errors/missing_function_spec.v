@@ -30,13 +30,12 @@ Section with_cpp.
 
   cpp.spec "test()" with (
     \post emp).
-(* TODO: text uses `verify?`, code uses `verify`. Align either way. *)
 (*@END-HIDE@*)
 
 (*|
 When we start our proof, `verify?` complains that it can not find a specification of `missing_spec()`, so we're aware of the problem.
  |*)
-Lemma test_ok : verify[source] "test()". (* TODO: fix this + error message*)
+Lemma test_ok : verify?[source] "test()". (* TODO: fix this + error message*)
 Proof.
   verify_spec.
   go.
