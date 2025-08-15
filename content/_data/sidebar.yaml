@@ -23,3 +23,5 @@
       url: docs/common_errors/missing_type_instances.v
     - title: Dealing with Missing Function Specs
       url: docs/common_errors/missing_function_spec.v
+    - title: Dealing with Missing Resources
+      url: docs/common_errors/missing_resource.v
