@@ -14,6 +14,7 @@ void test() {
 
 |*)
 (*@HIDE@*)
+Require Import bluerock.auto.cpp.prelude.spec.
 Require Import bluerock.auto.cpp.prelude.proof.
 Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 
@@ -30,6 +31,7 @@ Section with_cpp.
 
   cpp.spec "test()" with (
     \post emp).
+  Tactic Notation "wAdmit" uconstr(R) := iAssert (R : mpred)%I as "-#?"%string; first admit; rewrite ?bi.affinely_elim.
 (*@END-HIDE@*)
 
 (*|
@@ -39,58 +41,95 @@ Lemma test_ok : verify?[source] "test()". (* TODO: fix this + error message*)
 Proof.
   verify_spec.
   go.
-(*|
-```coq
-  _ : denoteModule source
-  --------------------------------------□
-  _ : PostCond
-  --------------------------------------∗
-  invoke.wp_invoke_O.body source "void()" (* TODO: fix this *)
-    (inl (Vptr (_global "missing_spec()"))) [] None
-    (λ _ : val,
-       interp source (1 >*> 1)
-         (wp_block source [region: return {?: "void"}] []
-            (Kcleanup source [] (Kreturn (λ v : ptr, ▷ _PostPred_ v)))))
-```
+  (*|
 
-The automation is stuck verifying this goal which is the invocation of the function
-`missing_spec()`, which is visible in the `inl (Vptr (_global "missing_spec()"))`.
+  The automation is stuck verifying the following goal – the invocation of the function
+  `missing_spec()`; the function name is visible in the `inl (Vptr (_global "missing_spec()"))`.
 
-## Solution #1: Add a Specification
+  ```coq
+    _ : denoteModule source
+    --------------------------------------□
+    _ : PostCond
+    --------------------------------------∗
+    wp_invoke_O source "void()"
+      (inl (Vptr (_global "missing_spec()"))) [] None
+      (λ _ : val,
+        interp source (1 >*> 1)
+          (wp_block source [region: return {?: "void"}] []
+              (Kcleanup source [] (Kreturn (λ v : ptr, ▷ _PostPred_ v)))))
+  ```
 
-Ultimately, to do the verification, we will need a function specification. We can
-write one in the normal way (see ... for more information).
-|*)
-cpp.spec "missing_spec()" as missing_spec_spec with (\post emp).
-(*|
-At this point, we have two choices. The easiest thing to do is to introduce this
-specification above
+  ## Solution #1: Mark the function for inlining
 
-### Choice 1: Restart the proof
+  If this function is trivial, or we don't want to write specification right now,
+  we can simply mark the function for inlining with the `cpp.spec ... inline`,
+  and continue the proof with `go`.
 
-just restart the proof.
+  Here, since "missing_spec()" is a no-op, this is enough to complete the proof.
+  |*)
+  (*@HIDE@*)
+  (*|
+  (see ... for more information).
+  |*)
+  (*@END-HIDE@*)
+  cpp.spec "missing_spec()" inline.
+  go.
 
-### Choice 2: Manually add to the context
+  (*@HIDE@*)
+  Undo 2.
+  go.
+  (* Goes back to before the cpp.spec command. `Undo 1`. doesn't do the right thing. *)
+  (*@END-HIDE@*)
 
-`wassume missing_spec_spec`?
-use `iAssert`
-|*)
-iAssert (missing_spec_spec)%I as "-#?"%string; first admit.
-go.
+  (*|
+  ## Solution #2: Add a Specification
 
-(*|
-## Solution #2: Mark the function for inlining
+  However, many functions are not trivial, so a specification is preferred over
+  inlining, or even required.
 
-If this function is trivial, or we don't want to write specification right now,
-we can also simply mark the function for inlining (see ... for more information).
-|*)
-cpp.spec "missing_spec()" inline.
-(*|
-Unlike with the previous solution, we do not need to add anything to the context and now `go` will continue past the function call finishing the proof in this case.
- |*)
-go.
+  We can define spec `missing_spec_spec` as usual, but actual specs are _not_
+  immediately available to the automation. We have two options to fix that.
+  |*)
+  (*@HIDE@*)
+  (*|
+  (see ... for more information).
+  |*)
+  (*@END-HIDE@*)
 
-Qed.
+  cpp.spec "missing_spec()" as missing_spec_spec with (\post emp).
+  Fail progress go.
+
+  (*|
+  ### Option a: add the proof to the context locally
+
+  While exploring the proof, to continue the proof without starting over, we can
+  use `wAdmit missing_spec_spec` to add it to our proof context, and complete
+  our goal with `go`. However, proofs using `wAdmit` are "incomplete" and cannot
+  be closed with `Qed`.
+  |*)
+  wAdmit missing_spec_spec.
+  go.
+  Fail Qed.
+  Admitted.
+
+  (*|
+
+  ### Option 2: Move the Spec above the Proof and Restart it
+
+  The easiest thing to do is to introduce this specification above the proof and
+  restart it; `verify?` or `verify` will then find the new spec and add it to the context.
+  |*)
+
+  (*|
+  ## Cleaning up
+
+  All these options can be useful while developing a proof.
+
+  But once we complete the proof with the correct spec, you'll want to move the
+  `cpp.spec` command together with other specs, so that all those specs are
+  available to other clients.
+  |*)
+
 (*@HIDE@*)
 End with_cpp.
 (*@END-HIDE@*)
