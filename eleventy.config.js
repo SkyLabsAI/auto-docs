@@ -3,6 +3,8 @@ import spawn from "node:child_process";
 import { mvParser } from './_11ty/mv-parser.js';
 import { parseCoqContent } from './_11ty/coq-parser.js';
 import { rocqToMd } from './_11ty/rocq-converter.js';
+import { cppToMd } from './_11ty/cpp-converter.js';
+
 import relativeLinks from "./_11ty/relative-links.js";
 
 import slugify from '@sindresorhus/slugify'; /* same as 11ty */
@@ -33,6 +35,19 @@ export default function (eleventyConfig) {
     return markdownOutput;
   });
   eleventyConfig.addExtension('v', {
+    key: 'md',
+  });
+
+  eleventyConfig.addTemplateFormats('hpp');
+  eleventyConfig.addTemplateFormats('cpp');
+
+  eleventyConfig.addPreprocessor('markdown-cpp', 'hpp,cpp', (data, content) => {
+    return cppToMd(content);
+  });
+  eleventyConfig.addExtension('hpp', {
+    key: 'md',
+  });
+  eleventyConfig.addExtension('cpp', {
     key: 'md',
   });
 
