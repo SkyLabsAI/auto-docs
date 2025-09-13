@@ -1,6 +1,6 @@
 ---
 title: Demos
-layout: page
+layout: index-page
 eleventyNavigation:
   key: demo
   order : 500
