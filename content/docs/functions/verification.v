@@ -94,7 +94,7 @@ fail to finish the proofs.
 Note that we can use the `verify[source]` notation with either the C++ function
 name or the Rocq specification name. In case of the former, the notation will
 look up in the environment to find the corresponding Rocq specification, e.g.,
-`verify[source]` will find that `add_spec` is the specification for `add(int,int)`
+`verify[source]` will find that `add_spec` is the specification for `add(int, int)`
 and generate the expected lemma statement.
 |*)
 
