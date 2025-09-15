@@ -16,7 +16,7 @@ import brokenLinks from 'eleventy-plugin-broken-links';
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 
-import { markdownify, unmarkdownify } from './_11ty/filters.js';
+import { markdownify, unmarkdownify, fileUtils } from './_11ty/filters.js';
 import navigation from "@11ty/eleventy-navigation";
 
 export default function (eleventyConfig) {
@@ -46,9 +46,11 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addExtension('hpp', {
     key: 'md',
+    outputFileExtension: 'hpp.html'
   });
   eleventyConfig.addExtension('cpp', {
     key: 'md',
+    outputFileExtension: 'cpp.html'
   });
 
   // Markdown Extensions
@@ -104,10 +106,7 @@ export default function (eleventyConfig) {
       return value;
     }
   });
-  eleventyConfig.addFilter('filename', (value) => {
-    return value.slice(value.lastIndexOf('/')+1);
-  });
-
+  eleventyConfig.addFilter('filename', fileUtils.name);
   eleventyConfig.addFilter('md', markdownify);
   eleventyConfig.addFilter('un_md', unmarkdownify);
 

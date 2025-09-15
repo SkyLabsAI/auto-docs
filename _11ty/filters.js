@@ -11,3 +11,8 @@ export const unmarkdownify = (content) => {
     .map((token) => token.content)
     .join('');
 };
+
+export const fileUtils = {
+  name : (file) => file.slice(file.lastIndexOf('/')+1),
+  ext : (file) =>  file.slice(file.lastIndexOf('.')+1)
+};
