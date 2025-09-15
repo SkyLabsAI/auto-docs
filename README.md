@@ -26,7 +26,7 @@ metadata: the title is used at the top of the document, and
 
 The `.v` files are converted to HTML by using syntax highlighting on the Rocq code.
 
-Comments using `(*@@ Markdown Text with LiquidJS Tags *)` are converted to paragraphs
+Comments using `(*| Markdown Text with LiquidJS Tags |*)` are converted to paragraphs
 "outside" the code blocks; probably avoid such comments "inside" Rocq sentences,
 the output is odd.
 
