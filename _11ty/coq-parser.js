@@ -6,9 +6,13 @@ export function parseCoqContent(coqContent) {
   const sentences = [];
   let currentSentence = '';
   let commentDepth = 0;
+  let inQuote = false;
 
   for (let i = 0; i < coqContent.length; i++) {
-    if (coqContent.startsWith('(*', i)) {
+    if (coqContent[i] === '"') {
+      inQuote = !inQuote;
+    }
+    if (coqContent.startsWith('(*', i) && !inQuote) {
       if (commentDepth === 0) {
         if (currentSentence !== '')
             sentences.push(currentSentence);
@@ -17,7 +21,7 @@ export function parseCoqContent(coqContent) {
       currentSentence += '(*';
       commentDepth++;
       i++; // Skip the next character
-    } else if (coqContent.startsWith('*)', i)) {
+    } else if (coqContent.startsWith('*)', i) && !inQuote) {
       i++; // Skip the next character
       currentSentence += '*)';
       commentDepth--;
