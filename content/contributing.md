@@ -14,7 +14,7 @@ We are very interested in your feedback on everything.
 
 ## Showcase your Development
 
-**Thanks for helping make the world more correct!**
+**Thanks for helping make the world more verified!**
 
 Maybe you verified just the piece of code that someone else is looking for, or maybe you found some new patterns that ease specification or verification.
 In either case (and more!) we (and the rest of the community) would really like to know about it.
