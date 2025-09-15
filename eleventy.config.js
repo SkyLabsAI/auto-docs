@@ -119,6 +119,10 @@ export default function (eleventyConfig) {
     // mode: 'html-relative',
     failOnError: true
   });
+  eleventyConfig.addPassthroughCopy('content/demo/**/*.v', {
+    // mode: 'html-relative',
+    failOnError: true
+  });
   eleventyConfig.addPassthroughCopy('content/assets');
   eleventyConfig.addPassthroughCopy(
     'content/'+eleventyConfig.globalData.docsTarBall.path+'/'+eleventyConfig.globalData.docsTarBall.filename,
