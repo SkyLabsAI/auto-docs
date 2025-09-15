@@ -1,3 +1,5 @@
+import { fileUtils } from '../../_11ty/filters.js';
+
 export default {
   layout: "page.njk",
   eleventyNavigation: {
@@ -6,6 +8,13 @@ export default {
   },
   eleventyComputed: {
     title : (data) =>
-      data.title ? data.title : data.page.inputPath.slice(data.page.inputPath.lastIndexOf('/')+1)
+      data.title ? data.title : fileUtils.name(data.page.inputPath),
+    eleventyNavigation: {
+      title: (data) => data.title,
+      order: (data) =>
+        'hpp' === fileUtils.ext(data.page.inputPath) ?  0 :
+        'cpp' === fileUtils.ext(data.page.inputPath) ? 10 :
+        fileUtils.name(data.page.inputPath).lastIndexOf('spec') != -1  ? 20 : 30
+    }
   }
 };
