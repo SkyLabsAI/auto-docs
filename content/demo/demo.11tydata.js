@@ -1,7 +1,6 @@
 import { fileUtils } from '../../_11ty/filters.js';
 
 export default {
-  layout: "page.njk",
   eleventyNavigation: {
     order: 10,
     parent: "demo"
@@ -9,6 +8,9 @@ export default {
   eleventyComputed: {
     title : (data) =>
       data.title ? data.title : fileUtils.name(data.page.inputPath),
+    layout: (data) =>
+      'md' === fileUtils.ext(data.page.inputPath) ? "index-page" :
+      'v' === fileUtils.ext(data.page.inputPath) ? "demo-layout" : "page",
     eleventyNavigation: {
       title: (data) => data.title,
       order: (data) =>
