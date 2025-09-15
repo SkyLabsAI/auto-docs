@@ -10,7 +10,7 @@ eleventyNavigation:
 
 ## Getting the Tools
 
-While we have been using the verification tool chain for more than 5 years at [BlueRock](https://bluerock.io), a public release is still in a beta stage.
+While we have been using the verification tool chain for more than 5 years at [BlueRock Security](https://bluerock.io), a public release is still in a beta stage.
 
 The automation is available under commercial and academic licenses.
 If you're interested in using the tools, please [contact us](mailto:contact@bluerock.io) to determine the right route.
