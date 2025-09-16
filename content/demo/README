@@ -1,0 +1,13 @@
+BlueRock BRiCk Examples
+=============================
+
+This package contains demonstrations of using the BlueRock BRiCk framework for
+verifying simple C++ code. The examples are focused on techniques and are often
+expressed in somewhat "toy" bits of code.
+
+Guidelines
+-------------
+
+Examples should contain a `README.md` file that describes the content of the
+example and the intended audience. If you think that an example is
+insufficiently documented, please create an MR or file a bug.

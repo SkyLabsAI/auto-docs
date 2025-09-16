@@ -21,3 +21,6 @@ Thumbs.db
 
 # Archives
 *.tar.gz
+
+# Dune
+dune.inc

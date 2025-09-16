@@ -1,0 +1,28 @@
+; Copyright © 2022-2025 BlueRock Security, Inc.
+;
+; This file is CONFIDENTIAL AND PROPRIETARY to BlueRock. All rights reserved.
+;
+; Use of this file is only permitted subject to a separate written license agreement with BlueRock.
+
+(include_subdirs qualified)
+(coq.theory
+ (name bluerock.cpp.demo) ; logical path of this library
+ ; (package rocq-bluerock-cpp-demo) ; avoid installing
+ (theories
+  ; bluerock deps
+  Stdlib Ltac2
+  Lens Lens.Elpi
+  stdpp iris
+  Equations Equations.Prop Equations.Type
+  elpi elpi_elpi elpi.apps.locker elpi.apps.NES
+  ExtLib
+  ; bluerock.prelude bluerock.iris.extra bluerock.upoly bluerock.lang.cpp
+  ; bluerock.ltac2.logger bluerock.ltac2.extra
+  ; bluerock.elpi.extra bluerock.elpi.cpp
+  ; bluerock.auto.core
+  ; bluerock deps END
+  bluerock
+  bluerock.cpp.stdlib
+  ))
+
+(include dune.inc)
