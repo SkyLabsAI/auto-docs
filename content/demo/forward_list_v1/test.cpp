@@ -5,10 +5,6 @@
  * SPDX-License-Identifier: LGPL-2.1 WITH BlueRock Exception for use over network, see repository root for details.
  */
 
-// Implementation note: this _code_ is a variant of [forward_list/demo.cpp] that
-// is tweaked more for testing <forward_list> and <list> specs.
-// Eventually, this code should live in stdlib tests.
-
 #include <cassert>
 #include <list>
 #include <forward_list>
