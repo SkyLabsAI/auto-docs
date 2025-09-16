@@ -152,5 +152,5 @@ This includes properties such as
 
 ## Up Next
 
-In the [next chapter of this tutorial](docs/scaffold/by_hand.md), we
+In the [next chapter of this tutorial](by_hand.md), we
 provide a more precise specification that also encompasses the functional behavior of `swap`.

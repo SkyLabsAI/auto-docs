@@ -6,9 +6,10 @@
   "scripts": {
     "test": "node _11ty/coq-parser.test.js && node _11ty/rocq-converter.test.js",
     "format": "prettier --write .",
-    "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve",
-    "watch": "npx @11ty/eleventy --serve --watch"
+    "build": "npx @11ty/eleventy --pathprefix=/auto-docs/",
+    "start": "npx @11ty/eleventy --serve --pathprefix=/auto-docs/",
+    "watch": "npx @11ty/eleventy --serve --watch --pathprefix=/auto-docs/",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/auto-docs/ --output=_github"
   },
   "keywords": [],
   "author": "",
