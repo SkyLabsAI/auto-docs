@@ -1,4 +1,4 @@
-# Micro Docs
+# BlueRock Auto Docs
 
 To install dependencies, run
 
@@ -6,7 +6,7 @@ To install dependencies, run
 npm install
 ```
 
-To serve the website, run
+To serve the website and watch for changes, run
 
 ```sh
 npm run watch
@@ -20,9 +20,6 @@ To add a new tutorial:
 - Add a `foo.v` file with the content, and a `foo.11tydata.json` file with
 metadata: the title is used at the top of the document, and
 `tags`/`requires`/`provides` are metadata that is not used yet.
-- Add the new tutorial to `fmdeps/micro-docs/content/_data/sidebar.yaml`; the
-  title there will be used in the sidebar.
-  XXX: This title should match the one in metadata, they'll be unified later.
 
 The `.v` files are converted to HTML by using syntax highlighting on the Rocq code.
 
