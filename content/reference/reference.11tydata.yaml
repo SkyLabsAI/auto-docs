@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: reference.njk
 eleventyNavigation:
   order : 2001
   parent : reference

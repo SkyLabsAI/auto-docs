@@ -109,6 +109,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('filename', fileUtils.name);
   eleventyConfig.addFilter('md', markdownify);
   eleventyConfig.addFilter('un_md', unmarkdownify);
+  eleventyConfig.addFilter('tick', (value) => `\`${value}\``);
+
 
   // Passthrough files
 
