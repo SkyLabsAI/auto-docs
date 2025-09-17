@@ -1,12 +1,13 @@
 ---
 title: Derive instances for BI predicates
+key: bluerock.auto.cpp.elpi.derive.bi
 ---
 (*|
-This supports generating, mainly for `Rep` and `mpred`, `#[global]` instances of:
+The command `derive` supports generating, mainly for `Rep` and `mpred`, `#[global]` instances of:
 - `Knowledge`
 - `Timeless`
 - `ExclusiveToken0`
-- `Typed cls _`/ `Observe (type_ptrR (Tanemd cls)) _`
+- `Typed cls _`/ `Observe (type_ptrR (Tnamed cls)) _`
 - `Fractional`, `FracValid0`, `AsFractional0`
 - `CFractional`, `CFracValid0`, `AsCFractional0`
 - `WeaklyObjective`
@@ -17,6 +18,13 @@ This is also the same for `fracsplittable`.
 
 Locked predicates using `mlock` and `br.lock` are supported as well as `Parameter`s.
 
+For definitions, the command tries to solve `Knowledge` by `solve_knowledge`,
+`Timeless` and `Typed` by `solve_TC`
+(the C++ type in `Typed` is an evar that should be solved by typeclass search);
+and `ExclusiveToken0` by `solve_exclusive`.
+
+The instances can be referred to by the convention `[Pred]_[instance type]`, e.g. `R_timeless`.
+
 ## Usages:
 ```coq
 #[only(knowledge)] derive Pred.
@@ -24,18 +32,32 @@ Locked predicates using `mlock` and `br.lock` are supported as well as `Paramete
 #[only(exclusive)] derive Pred.
 #[only(type_ptr)] derive Pred.
 #[only(timeless,knowledge)] derive Pred.
+#[only(cfractional,cfracvalid,ascfractional)] derive Pred.
 #[only(cfracsplittable)] derive Pred.
+#[only(fractional,fracvalid,asfractional)] derive Pred.
 #[only(fracsplittable)] derive Pred.
 #[only(wobjective)] derive Pred.
 ```
 
-## Example generation:
+## Examples:
 ```coq
-Pred_knowledge : ∀ `(Σ : cpp_logic) (x1 : A1) ⋯ (xn : AN), Knowledge (Pred x1 ⋯ xn).
+br.lock
+Definition prim0R `{Σ : cpp_logic} {σ : genv} (q : cQp.t) : Rep := primR Tint q 0.
+#[only(timeless)] derive prim0R.
+```
+This generates the following instance:
+```coq
+#[global] Instance prim0R_timeless : ∀ ti _Σ Σ σ q, Timeless (@prim0R ti _Σ Σ σ q).
+Proof. rewrite prim0R.unlock. apply _. Qed.
 ```
 
-`Knowledge` is solved by `solve_knowledge`,
-`Timeless` and `Typed` is solved by `solve_TC`
-(the C++ type in `Typed` is an evar that should be solved by typeclass search).
-`ExclusiveToken0` is solved by `solve_exclusive`.
+Meanwhile
+```coq
+Parameter R : ∀ `{Σ : !cpp_logic ti _Σ} (q : cQp.t), mpred.
+#[only(timeless)] derive R.
+```
+declares the following instance, because `R` is a `Parameter`.
+```coq
+#[global] Declare Instance R_timeless : ∀ ti _Σ Σ q, Timeless (@R ti _Σ Σ q).
+```
 |*)
