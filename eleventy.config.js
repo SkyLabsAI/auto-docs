@@ -83,14 +83,6 @@ export default function (eleventyConfig) {
   });
 
   // Collections
-  eleventyConfig.addCollection('learn', function (collectionApi) {
-    return collectionApi.getFilteredByTag('learn');
-  });
-
-  eleventyConfig.addCollection('reference', function (collectionApi) {
-    return collectionApi.getFilteredByTag('doc');
-  });
-
   eleventyConfig.addCollection('where', function (collectionApi) {
     const allProvides = collectionApi
       .getAll()
