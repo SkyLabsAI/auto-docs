@@ -1,6 +1,10 @@
 ---
 layout: reference.njk
 eleventyNavigation:
-  order : 2001
   parent : reference
 permalink: "reference/{{ key }}/"
+tags:
+- doc
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ key }}"

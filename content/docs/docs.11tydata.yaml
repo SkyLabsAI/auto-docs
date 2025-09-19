@@ -1,2 +1,4 @@
 ---
 layout : doc-layout.njk
+tags:
+- doc

@@ -12,7 +12,14 @@
   <div class="collapse {{'show' if is_current }}" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1 small px-4">
       {% set current = ancestors.pop() if is_current %}
-      {% for xxx in elem.children %}
+
+      {% if elem.key == 'reference' %}
+        {% set children = elem.children | sort_by('key') %}
+      {% else %}
+        {% set children = elem.children %}
+      {% endif %}
+
+      {% for xxx in children %}
         {% if is_current and xxx.key == current.key %}
           {{ menuitem(xxx, false, current, ancestors) }}
         {% else %}
