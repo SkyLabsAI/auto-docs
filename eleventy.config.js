@@ -110,6 +110,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('md', markdownify);
   eleventyConfig.addFilter('un_md', unmarkdownify);
   eleventyConfig.addFilter('tick', (value) => `\`${value}\``);
+  eleventyConfig.addFilter('sort_by', (collection, key) =>
+    collection.sort((a,b) => a[key].localeCompare(b[key]))
+  );
 
 
   // Passthrough files

@@ -1,6 +1,6 @@
 ---
 title: Reference Docs
-layout: index-page
+layout: index-by-key
 eleventyNavigation:
   key: reference
   order : 2000
