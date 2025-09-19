@@ -39,9 +39,9 @@ Definition hintPQ'_C (* : Cancel P Q *) := [CANCEL] hintPQ'.
 
 ## Advanced Features
 - The notations can parse (bi-)entailments that introduce new facts into the
-  Coq context. For example, `H : P |- ∃ (x : Z) (Hx : 1 <= x), Q x` is
+  Rocq context. For example, `H : P |- ∃ (x : Z) (Hx : 1 <= x), Q x` is
   turned into a forward hint `Fwd P` that introduces `(x : Z)` and
-  `(Hx : 1 <= x)` into the Coq context and exchanges `P` for `Q x` via `[FWD] H`.
+  `(Hx : 1 <= x)` into the Rocq context and exchanges `P` for `Q x` via `[FWD] H`.
 - The notations can also parse existential binders in the conclusion. These
   existentials are hoisted to the very top-level of the conclusion. For
   example, `[CANCEL] H` turns `H : P |- (∃ x : Z, Q' x) -∗ Q` into a cancellation
@@ -56,7 +56,7 @@ Given `H : P -|- Q`, we can derive `Fwd Q` (instead of `Fwd P`) via
 ## Specification
 The full set of notations is:
 - `[FWD]`, `[BWD]`, `[CANCEL]`
-- or, equivalently, `[FWD->], `[BWD<-]`, `[CANCEL->]` (note the backward
+- or, equivalently, `[FWD->]`, `[BWD<-]`, `[CANCEL->]` (note the backward
   arrow on `[BWD]`, which indicates the default direction of a backward hint)
 - or, to reverse bi-entailments, `[FWD<-]`, `[BWD->]`, `[CANCEL<-]`.
 
