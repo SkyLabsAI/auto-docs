@@ -72,7 +72,7 @@
             let docs;
 
             try {
-                const response = await fetch('/auto-docs/search.json');
+                const response = await fetch("{{ 'search.json.njk' | inputPathToUrl | url }}");
                 docs = await response.json();
 
                 idx = lunr(function () {
