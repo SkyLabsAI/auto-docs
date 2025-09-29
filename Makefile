@@ -6,7 +6,7 @@
 #
 
 ast-prepare:
-	dune b --auto-promote @dune_inc
+	dune b @dune_inc
 .PHONY: ast-prepare
 
 clean:
