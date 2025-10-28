@@ -86,7 +86,7 @@ End with_cpp.
 
 (*|
 With the correct specifications and the fact that the code is very simple,
-the `go` tactics of the the BlueRock's automation can discharged the proofs
+the `go` tactics of the the SkyLabs' automation can discharged the proofs
 without extra intervention.
 One can try to change the specifications, for example by removing the required
 resources or the `bitsize.bound` pre-condition, to see that the automation may
