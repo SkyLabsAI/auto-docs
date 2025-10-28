@@ -1,7 +1,7 @@
 (*|
 ## Stepping Through Functions
 
-In this tutorial we will learn how to use BlueRock's automation to step
+In this tutorial we will learn how to use SkyLabs' automation to step
 through functions and verify them line-by-line.
 
 We'll consider the following function with the specification written in
@@ -18,8 +18,8 @@ void test() {
 }
 ```
 
-To understand this, we'll use BlueRock's automation to teach us about
-the representation of the program state and how it evolves. 
+To understand this, we'll use SkyLabs' automation to teach us about
+the representation of the program state and how it evolves.
 
 
 |*)
@@ -49,10 +49,10 @@ Section with_cpp.
 
 (*|
 
-## Exploring a C++ Function with BlueRock Automation
+## Exploring a C++ Function with SkyLabs Automation
 
 With the specification, we can step through the function using
-the BlueRock automation. The automation is structured to work like symbolic
+the SkyLabs automation. The automation is structured to work like symbolic
 debugger. To start, we set up a proof of the function:
 |*)
   Lemma test_ok : verify[source] "test()".
@@ -68,7 +68,7 @@ At this point, the goal looks like the following
   --------------------------------------∗
   ::wpS  (* < running a statement *)
     [region: return {?: "void"}] (* < the variables in scope *)
-    (Sseq 
+    (Sseq
        [Sdecl [Dvar "x" "int" (Some (Eint 0 "int"))]; Sexpr (core.Epostinc (Evar "x" "int") "int");
         Sexpr (core.Epostdec (Evar "x" "int") "int")])
 ```

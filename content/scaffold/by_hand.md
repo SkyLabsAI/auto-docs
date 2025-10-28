@@ -67,10 +67,10 @@ of its arguments. We thus change the provided specification to:
 
 ```coq
 \arg{x_addr} "x" (Vptr x_addr)
-\pre{x} x_addr |-> ulongR 1$m x 
+\pre{x} x_addr |-> ulongR 1$m x
 \arg{y_addr} "y" (Vptr y_addr)
-\pre{y} y_addr |-> ulongR 1$m y 
-\post 
+\pre{y} y_addr |-> ulongR 1$m y
+\post
   x_addr |-> ulongR 1$m y **
   y_addr |-> ulongR 1$m x
 ```
@@ -96,7 +96,7 @@ file and closing the editor, which brings us back to our interactive `scaffold`
 session. As before, select `<DONE>` to write the changes to disk.
 
 This is all we need to have Rocq check this more precise specification. Given
-the simplicity of `swap`'s code, BlueRock's proof automation makes short work of
+the simplicity of `swap`'s code, SkyLabs' proof automation makes short work of
 proving the function's correctness against the new specification.
 
 ```shell

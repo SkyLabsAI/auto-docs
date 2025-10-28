@@ -6,5 +6,5 @@ eleventyNavigation:
   order : 2000
 ---
 :::info
-This section collects Reference Documentation for the BlueRock's proof automation.
+This section collects Reference Documentation for the SkyLabs' proof automation.
 :::
