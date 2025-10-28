@@ -26,6 +26,7 @@ export default function (eleventyConfig) {
       return YAML.parse(contents);
   });
   eleventyConfig.addGlobalData('company', 'Skylabs AI'); 
+  eleventyConfig.addGlobalData('copyrightYear', new Date().getFullYear());
   eleventyConfig.addGlobalData('siteTitle', 'FM Docs');
   eleventyConfig.addGlobalData("docsTarBall", { path : 'docs', filename : "docs.tar.gz"});
   eleventyConfig.addTemplateFormats('v');
