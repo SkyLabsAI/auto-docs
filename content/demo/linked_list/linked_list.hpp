@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2025 BlueRock Security, Inc.
+ * Copyright (C) 2025 SkyLabs AI.
  * All rights reserved.
  *
  * SPDX-License-Identifier: LGPL-2.1 WITH BlueRock Exception for use over network, see repository root for details.
