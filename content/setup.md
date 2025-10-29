@@ -6,9 +6,6 @@ eleventyNavigation:
   order : -1
 ---
 
-
-&nbsp;
-
 ## Getting the Tools
 
 While we have been using the verification tool chain for more than 5 years at [BlueRock Security](https://www.bluerock.io), a public release is still in a beta stage.

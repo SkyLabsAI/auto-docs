@@ -2,9 +2,10 @@
     --skylabs-blue: #0e639c;
     --skylabs-link: #4e94ce;
     --skylabs-dark: #343a40;
-    --skylabs-light: rgb(248, 249, 250);
+    --skylabs-light: #FAFBFC;
     --bs-body-font-family: 'Noto Sans', sans-serif;
    --bs-box-shadow-sm: 0 .125rem 0.15rem rgba(0, 0, 0, .075) !important;
+  
 }
 a[href]:not(:where(
                 /* exclude hash only links */
@@ -28,6 +29,13 @@ h2,h3,h4.h5,h6{
     font-weight: 600;
 }
 
+code{
+    font-size: 0.870rem !important;
+    
+}
+
+
+
 a{
     
     color: var(--skylabs-link);
@@ -39,9 +47,12 @@ a:hover{
 section{
     margin-bottom:2rem;
 }
-
+body{
+    background-color: var(--skylabs-light);
+   
+}
 .navbar {
-    background-color: var(--skylabs-dark);
+    background-color: var(--skylabs-light);
 }
 .navbar-brand,
 .nav-link {
@@ -90,7 +101,7 @@ section{
 }
 
 #sidebar li:hover{
-   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+   background-color: #f1f1f1 !important;
 }
 
 ul#sidebar > li > a {
@@ -133,7 +144,7 @@ ul#sidebar > li > a {
 }
 
 :not(.sidebar-toggle-nav)>.sidebar-child[aria-expanded="true"] {
-    background-color:rgba(var(--bs-light-rgb), 100) !important;
+   background-color: #f1f1f1 !important;
     
 }
 
