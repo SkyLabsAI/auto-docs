@@ -41,7 +41,7 @@
 
 {% set ancestors = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.parent, { includeSelf: true }) | reverse %}
 
-<div class="flex-shrink-0 bg-white" style="min-width: 250pt;">
+<div class="flex-shrink-0" style="min-width: 250pt;">
   <ul class="list-unstyled ps-0 mx-3" id="sidebar">
     {% set current = ancestors.pop() %}
     {% for elem in collections.all | eleventyNavigation %}
