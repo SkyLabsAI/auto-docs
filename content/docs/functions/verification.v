@@ -29,6 +29,7 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
+
 ## Specifying and Verifying Integer Addition
 We can specify our functions as follows.
 |*)
@@ -96,6 +97,8 @@ name or the Rocq specification name. In case of the former, the notation will
 look up in the environment to find the corresponding Rocq specification, e.g.,
 `verify[source]` will find that `add_spec` is the specification for `add(int, int)`
 and generate the expected lemma statement.
+
+
 |*)
 
 (*|

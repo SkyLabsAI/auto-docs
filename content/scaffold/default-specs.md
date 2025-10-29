@@ -112,6 +112,7 @@ indeed correct. The command should succeed.
 $ dune b proof/
 ```
 
+---
 ## What Have We Proven?
 
 To check the specification that `scaffold` generated for `swap`, open the file `proof/stage1_cpp/spec.v` and add `Print swap_spec.` to the end of the file.
@@ -150,6 +151,7 @@ This includes properties such as
 * `swap` does not access unitialized memory,
 * ... and more ...
 
+&nbsp;
 ## Up Next
 
 In the [next chapter of this tutorial](by_hand.md), we

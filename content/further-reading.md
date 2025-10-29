@@ -16,6 +16,7 @@ While this guide aims to be a (relatively) standalone introduction to the specif
 [Coq in a Hurry](https://cel.hal.science/file/index/docid/459139/filename/coq-hurry.pdf)
 : Yves Bertot's tutorial can help get you started with Rocq exploring basic tactics and navigation.
 
+---
 ## Separation Logic
 
 [FRAP](http://adam.chlipala.net/frap/frap_book.pdf)
@@ -31,6 +32,7 @@ These contain a number of resources built around a simple imperative programming
 [Tutorial on Separation Logic](http://www0.cs.ucl.ac.uk/staff/p.ohearn/Talks/CAV08tutorial.pdf) -- Peter O'Hearn
 : Slides for a tutorial on separation logic.
 
+---
 ## Program Verification
 
 [The BRiCk Project](https://github.com/bluerock-io/BRiCk)
