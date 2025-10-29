@@ -1,5 +1,5 @@
 (*|
-# Stepping Through Functions
+## Stepping Through Functions
 
 In this tutorial we will learn how to use BlueRock's automation to step
 through functions and verify them line-by-line.
@@ -19,7 +19,10 @@ void test() {
 ```
 
 To understand this, we'll use BlueRock's automation to teach us about
-the representation of the program state and how it evolves.
+the representation of the program state and how it evolves. 
+
+
+---
 |*)
 (*@HIDE@*)
 (* Setup the verification environment. *)
@@ -46,6 +49,7 @@ Section with_cpp.
 (*@END-HIDE@*)
 
 (*|
+
 ## Exploring a C++ Function with BlueRock Automation
 
 With the specification, we can step through the function using

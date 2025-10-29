@@ -17,6 +17,7 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
+---
 ## Specifying and Verifying a Loop
 
 The specification is indeed very simple: the function returns `10`, the result of

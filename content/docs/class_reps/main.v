@@ -20,6 +20,7 @@ Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
 (*@END-HIDE@*)
 
 (*|
+---
 ## The Program
 
 Here, we define the AST `source` containing our example C++ program: |*)
@@ -38,6 +39,7 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
+---
 ## The Model
 
 To formalize the type `IntCell`, we define a type `IntCellT` as the _model_ of `IntCell`. A value
@@ -63,6 +65,7 @@ Section with_cpp.
 (*@END-HIDE@*)
 
   (*|
+  ---
   ## The Representation Predicate
 
   In [state basics](../../state_basics/main) we saw how `intR` lets us represent the state
@@ -93,6 +96,8 @@ Section with_cpp.
 
   `structR "IntCell" q` means we own `q` fraction of a `IntCell` instance; `structR` is
   used for all `struct` and `class` aggregate C++ types.
+  
+  ---
   |*)
 
   (*@HIDE@*)
@@ -101,6 +106,7 @@ Section with_cpp.
   (*@END-HIDE@*)
 
   (*|
+  
   ## The Specifications
 
   Next, we specify `IntCell` constructors, destructor, and methods.

@@ -43,6 +43,7 @@ void rv_ref_arg(int&& r);
 Function-level specifications are at the heart of modular verification.
 In BRiCk, function specifications are written in a syntax inspired by [Doxygen](https://www.doxygen.nl/) using `\` commands.
 
+---
 ## The Post-condition - `\post`
 
 All function specifications must end with a `\post` line.
@@ -53,6 +54,7 @@ cpp.spec "test()" with
   (\post emp (* ownership to return *)).
 (*|
 
+---
 ## Returning Values - `\post[]`
 
 Functions that return values use a special form of `\post` where the return value is placed in `[]`.
@@ -77,6 +79,7 @@ cpp.spec "int_return()" with
   (\post{(v : Z) (w : Z)}[Vint (v + w)] emp).
 
 (*|
+---
 ## Spatial Pre-conditions - `\pre`
 
 Spatial ownership can be added to the pre-condition of the function using `\pre`.
@@ -97,6 +100,7 @@ cpp.spec "test()" with
    \post emp).
 
 (*|
+---
 ## Pure Pre-conditions - `\require`
 
 Non-spatial facts, e.g. `x < 5`, can be added to the pre-condition using `\require`.
@@ -108,6 +112,7 @@ cpp.spec "test()" with
    \post emp).
 
 (*|
+---
 ## Primitive Arguments - `\arg`
 
 Arguments of primitive types, e.g. `int`, `char`, `C*`, etc, are described using the `\arg` command, which takes a string name for documentation purposes and a value that the argument must match.

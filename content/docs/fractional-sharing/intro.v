@@ -8,6 +8,7 @@ Context `{cpp_logic} {σ : genv}.
 Read-only sharing of data is pervasive in programs from small to large.
 Limiting mutability is especially crucial when avoiding data races in concurrent programs since these lead to [undefined behavior](todo); however, fine-grained, sequential immutability is a powerful tool when building and reasoning about programs.
 
+---
 ## Fractional Permissions
 
 The most common way to describe sharing of resources in separation logic is using fractional permissions.
@@ -24,6 +25,7 @@ The second to last argument is a `cQp.t` which is a (`const`-annotated, the `c`)
 For the purpose of sharing, we'll focus only on the `Qp`.
 When we write these in the common notation, we use `q$m` or `q$c`, `q` is the fraction.
 
+---
 ## Dividing Ownership
 The benefit of using fractions is that they can easily be split up and re-combined.
 For example, if we have full ownership of an integer, we can divide it into two parts and give those two parts to different threads or data abstractions.
@@ -59,6 +61,7 @@ Symmetric fractions are often quite easy to work with, but it can also be helpfu
 To capture this pattern, it is common to use non-symmetric fractions, e.g. the main thread retains `2/3` ownership while the worker thread gets `1/3` ownership.
 :::
 
+---
 ## Combining Ownership
 In addition to splitting, ownership can also be combined.
 |*)
@@ -70,6 +73,7 @@ Proof. work. Qed.
 
 In general, all of the theorem that we proved in the previous section also hold for combining.
 
+---
 ## Consistency
 A crucial property of fractional ownership is that all of the ownership must be _consistent_.
 Concretely, if I have two fractions of ownership of the same location at unknown values, then those to values must be the same.
@@ -88,6 +92,7 @@ Proof. (* ... proof elided ... *) (*@HIDE@*)
 
 Consistency is a powerful reasoning feature when reasoning through abstractions and concurrent invariants, but in simple sequential code it is mostly unnecessary.
 
+---
 ## "Full" Ownership & Fractional Validity
 It is common to talk about fraction 1 as "full ownership".
 This is because the fractional ownership of an object is constrained to be **greater than** 0 and **less than or equal** to 1[^fraction-validity].

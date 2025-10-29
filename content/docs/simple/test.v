@@ -1,5 +1,5 @@
 (*|
-# Verifying a Simple Function
+## Verifying a Simple Function
 
 Our first proof will be about a very simple function:
 
@@ -9,6 +9,7 @@ void test() { }
 
 This is trivial, but it lets us learn the basics about verification.
 
+---
 ## Setting up the Verification
 
 Import the C++ verification environment:
@@ -27,6 +28,7 @@ cpp.prog source prog cpp:{{
 
 (*|
 Some more setup is omitted for now.
+
 |*)
 (*@HIDE@*)
 Section with_cpp.
@@ -36,6 +38,10 @@ Section with_cpp.
 (*@END-HIDE@*)
 
 (*|
+
+&nbsp;
+
+---
 ## Specifying the Expected Behavior
 
 We must first specify what the `test` function does.
@@ -46,6 +52,7 @@ cpp.spec "test()" from source as test_spec with
 This specification states that `test()` does nothing.
 The `\post emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
 
+---
 ## Verifying the Function
 
 Now, we can set up the verification by posing a `Lemma`.

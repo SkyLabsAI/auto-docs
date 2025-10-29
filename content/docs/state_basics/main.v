@@ -1,5 +1,5 @@
 (*|
-# The Program State
+## The Program State
 
 In this tutorial we will focus on the very basics of {{ "separation logic" | terminology }},
 primarily on primitive types. Separation logic is a logic of {{ "resource" | terminology }} that can be "owned".
@@ -45,6 +45,7 @@ _local "x" |-> intR 1$m 1
 Here, the pointer did not change, but the value stored at the pointer changed
 from `0` to `1`.
 
+---
 ## Multiple Locations
 
 Now suppose that we declare a new variable.
@@ -74,6 +75,7 @@ of the two locations. Without the disjointness, we would need to explicitly stat
 not be overly cumbersome, but as the number of pointers grows and abstractions hide internal pointers,
 explicit disjointness without separation logic quickly becomes intractable.
 
+---
 ## The Frame Rule
 
 The benefit of disjointness is that it enables highly modular reasoning. For example, suppose
@@ -93,6 +95,7 @@ Thus, after the update, the state looks like the following:
 _local "x" |-> intR 1$m 1 ** _local "y" |-> intR 1$m 11
 ```
 
+&nbsp;
 ## Recap
 
 With this we have seen the basics of how separation logic works in a very small example.
