@@ -17,7 +17,6 @@ The tutorial assumes that the following tools are installed:
 * [`bear`](https://github.com/rizsotto/Bear)
 * [`clang`](https://clang.llvm.org/)
 
----
 ## The C++ Code
 
 To start with `scaffold`, we create a fresh directory `example/` and populate it with C++
@@ -46,7 +45,6 @@ $ bear -- clang -c src/stage1.cpp
 Build systems such as [cmake](https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html) and [bazel](https://github.com/kiron1/bazel-compile-commands) support generating `compile_commands.json` files.
 :::
 
----
 ## Project Initialization
 
 Before we get to verification, we have to prepare our project.
@@ -87,7 +85,6 @@ $ tree
 └── stage1.o
 ```
 
----
 ## Building the Project
 
 It is useful to confirm that the generated code builds. To do that, we use [`dune`](https://dune.build/).
@@ -105,7 +102,6 @@ You can do this using `scaffold gen`.
 $ scaffold gen
 ```
 
----
 ## Wrapping Up
 
 At this point, we have initialized a new verification of a simple bit of C++ code.
