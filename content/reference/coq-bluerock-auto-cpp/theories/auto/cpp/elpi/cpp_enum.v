@@ -16,7 +16,6 @@ where
            | alias   (* an alias of a type, e.g. `enum align_t : size_t {};` *)
            | newtype (* same as alias, but introduces a new type *)
 ```
----
 ## Examples
 We consider the following C++ code
 ```cpp

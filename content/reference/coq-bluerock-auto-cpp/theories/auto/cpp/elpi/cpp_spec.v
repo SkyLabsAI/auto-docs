@@ -27,7 +27,6 @@ bindings of type `genv` (call it `σ`) and `TU ⊧ σ`.
 <inline> and <default> are not yet supported for template
 specifications.
 
-&nbsp;
 ### Attributes:
 - `ignore_errors`	do not validate `\arg`ument types
 
@@ -49,7 +48,6 @@ specifications.
 - `verbose` verbose printing.
 - `debug` debugging.
 
----
 ## Examples
 ```coq
 cpp.spec "h(int, bool)" as "h_spec4" with (

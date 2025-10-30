@@ -6,8 +6,6 @@ key: bluerock.auto.core.hints.cancelx_notation
 This file defines a DSL to simplify to definition and proof of hints.
 The same language is usable with `Bwd`, `Fwd` and `CancelX` hints.
 `Fwd` hints are still special since they're run at a different phase.
-
----
 ## `CancelX` Hints
 The following syntax defines a `CancelX` hint:
 ```coq
@@ -55,7 +53,6 @@ quantifiers in the above formula.
 Case in point, even though `Q` and `QQ` appear under `∃ c` (the intro-ed variable),
 they cannot refer to `c`.
 
----
 ## `Bwd` Hints
 The following syntax defines a `Bwd` hint:
 ```coq
@@ -75,8 +72,7 @@ The resulting hint statement is equivalent to:
 ```coq
 ∀ a b, (∃ c, Q' a b c ** QQ a b) |-- Q a b ** QQ a b
 ```
----
-## `Fwd` Hints
+# `Fwd` Hints
 The following syntax defines a `Fwd` hint:
 ```coq
 #[program]
@@ -94,7 +90,6 @@ The resulting hint statement is equivalent to:
 ```coq
 ∀ a, P a ** PP a |-- ∃ b, P' a b ** PP a
 ```
----
 ## Binders
 Each keyword that declares a predicate can additionally bind one or more variable with an appropriate binder. Here is
 how to desugar those variable declarations:
