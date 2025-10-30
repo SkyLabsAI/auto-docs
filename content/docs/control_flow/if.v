@@ -61,7 +61,6 @@ Proof.
 (*|
 At this point, the proof is stuck on the case split which is reflected by `branch.stmt`, i.e. a statement-level branch.
 
----
 ## Manual Verification
 
 The simplest thing that we can do at this point is to use the `wp_if` tactic to tell the automation that we want to consider both cases.
@@ -98,8 +97,7 @@ Proof.
 Qed.
 
 (*|
----
-## Automatic Case Splitting
+### Automatic Case Splitting
 
 In cases such as this one, where the two branches of the `if` do not re-join before the end of the function, this sort of case splitting is almost always what we want to do.
 To tell the automation to do this automatically, we can use a hint.
@@ -123,7 +121,6 @@ Qed.
 (*|
 This is especially useful for small functions whose implementation is effectively a single `if`.
 
-&nbsp;
 ## A Note
 Splitting the goal directly like this is quite common, but it can be a bit dangerous because it requires that we prove the code after the `if` statement for each branch.
 We will discuss specifying "join points" in a subsequent tutorial.

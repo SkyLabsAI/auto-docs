@@ -22,7 +22,6 @@ To understand this, we'll use SkyLabs' automation to teach us about
 the representation of the program state and how it evolves.
 
 
----
 |*)
 (*@HIDE@*)
 (* Setup the verification environment. *)

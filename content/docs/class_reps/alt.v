@@ -9,7 +9,6 @@ Implicit Type (σ : genv).
 NES.Begin Point.
 
 (*|
----
 ## Class Representation predicates
 
 Consider the following AST `source`, definining C++ class `Point`.

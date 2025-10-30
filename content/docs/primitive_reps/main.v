@@ -4,7 +4,7 @@ Section with_cpp.
   Context `{Σ : cpp_logic} {σ : genv}.
 (*@END-HIDE@*)
 (*|
-## Primitive Reps
+# Primitive Reps
 
 The BRiCk program logic provides several {{ "representation predicates" | terminology }} for
 primitive C++ state.
@@ -15,7 +15,6 @@ primitive C++ state.
 
 **Convention**: By convention, representation predicates end with a capital `R`, e.g. `primR`, `fooR`, etc.
 
----
 ## `primR`
 
 The most common predicate for talking about the value at a program location is `primR`.
@@ -57,7 +56,6 @@ Print charR.
 Print wcharR.
 
 (*|
----
 ## `uninitR` -- Uninitialized Data
 
 Unlike high-level languages, C++ does not mandate that all variables are initialized.
@@ -81,9 +79,6 @@ In practice, we often prefer `anyR` to capture a value that may or may not be in
 
 (*|
 
-&nbsp;
-
----
 ## `anyR` -- Possibly Uninitialized Data
 
 The `anyR` `Rep`-predicate captures a program location that is either initialized or not.
@@ -108,11 +103,6 @@ to say that the loop will execute correctly regardless of whether `x` is initial
 |*)
 
 (*|
-
-&nbsp;
- 
- &nbsp;
- 
 ## Recap
 
 Here we learned about the three most common predicates for describing primitive data,

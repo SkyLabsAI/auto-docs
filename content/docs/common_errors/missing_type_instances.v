@@ -59,7 +59,6 @@ Proof.
 
 The automation is stuck verifying this goal because it can not prove the `reference_to "C" c_addr` obligation.
 
----
 ## Solution: Add a Hint
 
 This is most commonly solved using a `Typed` hint on the class. The following code creates this hint automatically.
