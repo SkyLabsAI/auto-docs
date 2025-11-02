@@ -29,6 +29,7 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
+
 ## Specifying and Verifying Integer Addition
 We can specify our functions as follows.
 |*)
@@ -85,7 +86,7 @@ End with_cpp.
 
 (*|
 With the correct specifications and the fact that the code is very simple,
-the `go` tactics of the the BlueRock's automation can discharged the proofs
+the `go` tactics of the the SkyLabs' automation can discharged the proofs
 without extra intervention.
 One can try to change the specifications, for example by removing the required
 resources or the `bitsize.bound` pre-condition, to see that the automation may
@@ -96,6 +97,8 @@ name or the Rocq specification name. In case of the former, the notation will
 look up in the environment to find the corresponding Rocq specification, e.g.,
 `verify[source]` will find that `add_spec` is the specification for `add(int, int)`
 and generate the expected lemma statement.
+
+
 |*)
 
 (*|

@@ -6,7 +6,7 @@ eleventyNavigation:
   order : 1000
 ---
 
-While this guide aims to be a (relatively) standalone introduction to the specification infrastructure at BedRock Systems, there are a variety of supplemental resources which can help you to improve your craft:
+While this guide aims to be a (relatively) standalone introduction to the specification infrastructure at SkyLabs AI, there are a variety of supplemental resources which can help you to improve your craft:
 
 ## General Rocq
 
@@ -33,9 +33,9 @@ These contain a number of resources built around a simple imperative programming
 
 ## Program Verification
 
-[The BRiCk Project](https://github.com/bluerock-io/BRiCk)
-: BlueRock's C++ program logic.
+[The BRiCk Project](https://github.com/SkylabsAI/BRiCk)
+: SkyLabs AI's C++ program logic.
 
 [Verifiable C](https://vst.cs.princeton.edu/veric/)
 : Resources about C program verification based on the [CompCert](https://compcert.org/) compiler and the VST toolchain.
-BRiCk and the BlueRock toolchain are heavily inspired by this work.
+BRiCk and the SkyLabs AI toolchain are heavily inspired by this work.

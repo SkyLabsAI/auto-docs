@@ -25,8 +25,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addDataExtension('yaml', (contents) => {
       return YAML.parse(contents);
   });
-
-  eleventyConfig.addGlobalData('siteTitle', 'BlueRock FM Docs');
+  eleventyConfig.addGlobalData('company', 'Skylabs AI'); 
+  eleventyConfig.addGlobalData('copyrightYear', new Date().getFullYear());
+  eleventyConfig.addGlobalData('siteTitle', 'FM Docs');
   eleventyConfig.addGlobalData("docsTarBall", { path : 'docs', filename : "docs.tar.gz"});
   eleventyConfig.addTemplateFormats('v');
   eleventyConfig.addPreprocessor('markdown-rocq', 'v', (data, content) => {

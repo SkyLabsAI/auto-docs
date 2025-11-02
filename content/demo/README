@@ -1,7 +1,7 @@
-BlueRock BRiCk Examples
+SkyLabs BRiCk Examples
 =============================
 
-This package contains demonstrations of using the BlueRock BRiCk framework for
+This package contains demonstrations of using the SkyLabs BRiCk framework for
 verifying simple C++ code. The examples are focused on techniques and are often
 expressed in somewhat "toy" bits of code.
 

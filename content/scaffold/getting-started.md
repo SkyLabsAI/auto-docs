@@ -12,7 +12,7 @@ The `scaffold` tool offers a quick way to start verifying existing C++ code.
 
 The tutorial assumes that the following tools are installed:
 
-* BlueRock proof automation
+* Skylabs proof automation
 * `scaffold`
 * [`bear`](https://github.com/rizsotto/Bear)
 * [`clang`](https://clang.llvm.org/)
@@ -109,4 +109,3 @@ To continue with this example, take a look at:
 
 1. [Specifying functions](default-specs.md)
 2. [Adapting function specifications](by_hand.md)
-
