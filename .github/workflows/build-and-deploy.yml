@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: "Build and Deploy"
 
 on:
   push:
@@ -19,12 +19,13 @@ jobs:
           cache: 'npm'
       - name: "Install dependencies and build"
         run: |
+          # Install dependencies.
           npm ci
-          npm run build-ghpages  # outputs to ./_github
+          # Build the website, output to directory [./_github].
+          npm run build-ghpages
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_github  # your Eleventy output folder
-
+          path: ./_github
   deploy:
     needs: build
     runs-on: ubuntu-latest
