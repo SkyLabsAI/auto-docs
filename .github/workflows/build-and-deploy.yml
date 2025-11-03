@@ -1,0 +1,41 @@
+name: "Build and Deploy"
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    types: [synchronize,opened,reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: "Install dependencies and build"
+        run: |
+          # Install dependencies.
+          npm ci
+          # Build the website, output to directory [./_github].
+          npm run build-ghpages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_github
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref_name == 'main'
+    permissions:
+      pages: write # Needed for deploying to Pages
+      id-token: write # Required for OIDC authentication
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
