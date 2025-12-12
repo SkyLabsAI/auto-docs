@@ -1,1 +1,1 @@
-../../../auto/coq-bluerock-auto-cpp/tests/cpp2v-dune-gen.sh
+../../../auto/rocq-skylabs-auto-cpp/tests/cpp2v-dune-gen.sh
