@@ -13,10 +13,10 @@ implemented using C++ resources.
 (*@HIDE@*)
 (*| Here, we demonstrate how to verify a class
 First we setup our automation. |*)
-Require Import bluerock.auto.cpp.prelude.proof.
+Require Import skylabs.auto.cpp.prelude.proof.
 
 (*| Import a command to specify our C++ program "inline". |*)
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 (*@END-HIDE@*)
 
 (*|
@@ -96,8 +96,8 @@ Section with_cpp.
   |*)
 
   (*@HIDE@*)
-  (* TODO: I want to show br.lock, not this, but it's too early for [br.lock]. *)
-  #[global] Hint Opaque IntCellR : br_opacity typeclass_instances.
+  (* TODO: I want to show sl.lock, not this, but it's too early for [sl.lock]. *)
+  #[global] Hint Opaque IntCellR : sl_opacity typeclass_instances.
   (*@END-HIDE@*)
 
   (*|

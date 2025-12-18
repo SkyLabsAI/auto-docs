@@ -1,6 +1,6 @@
 ---
 title: Tactics for arithmetics
-key: bluerock.auto.cpp.Arith
+key: skylabs.auto.cpp.Arith
 ---
 (*|
  Main tactics:

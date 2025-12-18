@@ -13,10 +13,10 @@ This is trivial, but it lets us learn the basics about verification.
 
 Import the C++ verification environment:
 |*)
-Require Import bluerock.auto.cpp.prelude.proof.
+Require Import skylabs.auto.cpp.prelude.proof.
 
 (*| Import a command to specify our C++ program "inline". |*)
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 (*|
 

@@ -1,6 +1,6 @@
 ---
 title: Derive Eager unfolding hints
-key: bluerock.auto.elpi.derive.eager_unfold
+key: skylabs.auto.elpi.derive.eager_unfold
 ---
 (*|
 :::warn

@@ -69,7 +69,7 @@ check that their local state matches the tutorial.
 ```shell
 $ tree
 .
-├── br-project.toml
+├── sl-project.toml
 ├── compile_commands.json
 ├── dune
 ├── dune-project

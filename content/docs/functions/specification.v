@@ -1,6 +1,6 @@
 (*@HIDE@*)
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
-Require Import bluerock.auto.cpp.prelude.spec.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.spec.
 
 cpp.prog source prog cpp:{{
   const int foo = 3;

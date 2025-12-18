@@ -1,6 +1,6 @@
 ---
 title: The `cpp.enum` command
-key: bluerock.auto.elpi.cpp_enum
+key: skylabs.auto.elpi.cpp_enum
 ---
 (*|
 ## Usage

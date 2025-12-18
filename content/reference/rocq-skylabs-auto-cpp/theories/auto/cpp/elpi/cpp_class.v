@@ -1,6 +1,6 @@
 ---
 title: The `cpp.class` command
-key: bluerock.auto.elpi.cpp_class
+key: skylabs.auto.elpi.cpp_class
 ---
 (*|
 ## Usage
@@ -137,7 +137,7 @@ Record MyModel : Set := mkMyModel { x : Z; client : Client.T }.
 Definition I (m : MyModel) :=
   m.(client).(Client.some_client_data) = m.(client).(Client.other_client_data).
 
-br.lock Definition Client_R `{Σ : cpp_logic, σ : genv} (q : cQp.t) (m : MyModel) : Rep :=
+sl.lock Definition Client_R `{Σ : cpp_logic, σ : genv} (q : cQp.t) (m : MyModel) : Rep :=
   pureR [| I m |] ** Client.R q m.(client).
 
 cpp.class "Test::Client"

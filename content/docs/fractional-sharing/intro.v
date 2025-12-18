@@ -1,5 +1,5 @@
 (*@HIDE@*)
-Require Import bluerock.auto.cpp.prelude.proof.
+Require Import skylabs.auto.cpp.prelude.proof.
 
 Section with_cpp.
 Context `{cpp_logic} {σ : genv}.

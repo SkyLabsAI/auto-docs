@@ -1,6 +1,6 @@
 (*@HIDE@*)
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 cpp.prog source prog cpp:{{
   int cond(bool test, int thn, int els) {

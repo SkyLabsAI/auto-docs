@@ -1,6 +1,6 @@
 ---
 title: Derive `Bwd` hints
-key: bluerock.auto.elpi.derive.bwd
+key: skylabs.auto.elpi.derive.bwd
 ---
 (*|
 :::warn

@@ -1,6 +1,6 @@
 ---
 title: Using breakpoints
-key: bluerock.auto.cpp.breakpoints
+key: skylabs.auto.cpp.breakpoints
 ---
 (*|
 Suggested uses of breakpoints:

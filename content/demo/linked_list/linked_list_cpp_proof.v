@@ -4,11 +4,11 @@
  * See the LICENSE-BedRock file in the repository root for details.
  *)
 
-Require Import bluerock.auto.cpp.prelude.proof.
+Require Import skylabs.auto.cpp.prelude.proof.
 
-Require Import bluerock.cpp.demo.linked_list.linked_list_hpp_spec.
+Require Import skylabs.cpp.demo.linked_list.linked_list_hpp_spec.
 
-Require Import bluerock.cpp.demo.linked_list.linked_list_cpp.
+Require Import skylabs.cpp.demo.linked_list.linked_list_cpp.
 
 #[local] Set Default Proof Using "Type*".
 

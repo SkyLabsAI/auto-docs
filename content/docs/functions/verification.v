@@ -6,10 +6,10 @@ programs. These include additions of integers and a swap function.
 ## Simple Functions
 Import the C++ verification environment:
 |*)
-Require Import bluerock.auto.cpp.prelude.proof.
+Require Import skylabs.auto.cpp.prelude.proof.
 
 (*| Import the command `cpp.prog` to inline our C++ functions in Rocq. |*)
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 (*| Define AST `source` containing our example C++ functions. |*)
 cpp.prog source prog cpp:{{

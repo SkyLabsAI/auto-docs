@@ -1,6 +1,6 @@
 ---
 title: Syntax for defining hints
-key: bluerock.auto.core.hints.orient
+key: skylabs.auto.core.hints.orient
 ---
 (*|
 This module defines notations that can convert certain BI facts into hints

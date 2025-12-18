@@ -4,12 +4,12 @@
  * This software is distributed under the terms of the BedRock Open-Source License.
  * See the LICENSE-BedRock file in the repository root for details.
  *)
-Require Import bluerock.auto.cpp.proof.
+Require Import skylabs.auto.cpp.proof.
 
-Require Import bluerock.cpp.demo.aggregate01.Point_hpp_spec.
+Require Import skylabs.cpp.demo.aggregate01.Point_hpp_spec.
 
-Require bluerock.auto.cpp.hints.fractional.
-#[local] Hint Resolve fractional.UNSAFE_read_prim_cancel : br_opacity.
+Require skylabs.auto.cpp.hints.fractional.
+#[local] Hint Resolve fractional.UNSAFE_read_prim_cancel : sl_opacity.
 
 Section with_Σ.
   Context `{Σ: cpp_logic} {σ : genv}.
@@ -27,10 +27,10 @@ Section with_Σ.
 
   (* We can only use one hint, and we choose [UNSAFE_learnable_pointR] over
   [learnable_pointR] here. *)
-  #[local] Hint Resolve UNSAFE_learnable_pointR : br_opacity.
+  #[local] Hint Resolve UNSAFE_learnable_pointR : sl_opacity.
 
-  #[local] Hint Opaque PointR : br_opacity.
-  #[local] Hint Extern 1 (PointR _ _ |-- PointR _ _) => reflexivity : br_opacity.
+  #[local] Hint Opaque PointR : sl_opacity.
+  #[local] Hint Extern 1 (PointR _ _ |-- PointR _ _) => reflexivity : sl_opacity.
 
   Lemma ctor_ok : verify[ Point_hpp.source ] ctor_spec.
   Proof. verify_spec; go. Qed.
@@ -48,15 +48,15 @@ Section with_Σ.
   Proof. verify_spec; go. Qed.
 
   Definition mdist_link := [LINK] mdist_ok.
-  #[local] Hint Resolve mdist_link : br_opacity.
+  #[local] Hint Resolve mdist_link : sl_opacity.
   Definition getX_link := [LINK] getX_ok.
-  #[local] Hint Resolve getX_link : br_opacity.
+  #[local] Hint Resolve getX_link : sl_opacity.
   Definition getY_link := [LINK] getY_ok.
-  #[local] Hint Resolve getY_link : br_opacity.
+  #[local] Hint Resolve getY_link : sl_opacity.
   Definition ctor_link := [LINK] ctor_ok.
-  #[local] Hint Resolve ctor_link : br_opacity.
+  #[local] Hint Resolve ctor_link : sl_opacity.
   Definition dtor_link := [LINK] dtor_ok.
-  #[local] Hint Resolve dtor_link : br_opacity.
+  #[local] Hint Resolve dtor_link : sl_opacity.
 
   (* soundness of the specification *)
   Theorem Point_hpp_ok :

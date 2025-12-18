@@ -4,8 +4,8 @@
  * This software is distributed under the terms of the BedRock Open-Source License.
  * See the LICENSE-BedRock file in the repository root for details.
  *)
-Require Import bluerock.auto.cpp.proof.
-Require Import bluerock.cpp.demo.inline.inline_hpp.
+Require Import skylabs.auto.cpp.proof.
+Require Import skylabs.cpp.demo.inline.inline_hpp.
 
 Import auto_frac.
 

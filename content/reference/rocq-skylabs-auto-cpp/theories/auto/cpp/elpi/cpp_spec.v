@@ -1,6 +1,6 @@
 ---
 title: The `cpp.spec` command
-key: bluerock.auto.elpi.cpp_spec
+key: skylabs.auto.elpi.cpp_spec
 ---
 (*|
 ## Usage

@@ -6,24 +6,23 @@
 
 (include_subdirs qualified)
 (coq.theory
- (name bluerock.cpp.demo) ; logical path of this library
- ; (package rocq-bluerock-cpp-demo) ; avoid installing
+ (name skylabs.cpp.demo) ; logical path of this library
+ ; (package rocq-skylabs-cpp-demo) ; avoid installing
  (theories
-  ; bluerock deps
+  ; skylabs deps
   Stdlib Ltac2
   Lens Lens.Elpi
   stdpp iris
   Equations Equations.Prop Equations.Type
   elpi elpi_elpi elpi.apps.locker elpi.apps.NES
   ExtLib
-  ; bluerock.prelude bluerock.iris.extra bluerock.upoly bluerock.lang.cpp
-  ; bluerock.ltac2.logger bluerock.ltac2.extra
-  ; bluerock.elpi.extra bluerock.elpi.cpp
-  ; bluerock.auto.core
-  ; bluerock deps END
-  bluerock
-  bluerock.cpp.stdlib
-  ))
+  ; skylabs.prelude skylabs.iris.extra skylabs.upoly skylabs.lang.cpp
+  ; skylabs.ltac2.logger skylabs.ltac2.extra
+  ; skylabs.elpi.extra skylabs.elpi.cpp
+  ; skylabs.auto.core
+  ; skylabs deps END
+  skylabs
+  skylabs.cpp.stdlib))
 
 (include dune.inc)
 

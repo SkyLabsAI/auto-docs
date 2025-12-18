@@ -1,6 +1,6 @@
 ---
 title: DSL for defining hints
-key: bluerock.auto.core.hints.cancelx_notation
+key: skylabs.auto.core.hints.cancelx_notation
 ---
 (*|
 This file defines a DSL to simplify to definition and proof of hints.

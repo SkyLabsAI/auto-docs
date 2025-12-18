@@ -1,6 +1,6 @@
 ---
 title: Join points
-key: bluerock.auto.cpp.delayed_case_tactics
+key: skylabs.auto.cpp.delayed_case_tactics
 ---
 (*|
 This file provides two tactics `wp_if` and `wp_switch`,  with variants,

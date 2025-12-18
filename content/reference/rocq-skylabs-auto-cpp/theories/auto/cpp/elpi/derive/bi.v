@@ -1,6 +1,6 @@
 ---
 title: Derive instances for BI predicates
-key: bluerock.auto.cpp.elpi.derive.bi
+key: skylabs.auto.cpp.elpi.derive.bi
 ---
 (*|
 The command `derive` supports generating, mainly for `Rep` and `mpred`, `#[global]` instances of:
@@ -16,7 +16,7 @@ The command `derive` supports generating, mainly for `Rep` and `mpred`, `#[globa
 `AsCFractional0` and `CFracValid0`, and *not* `CFracSplittable_0`.
 This is also the same for `fracsplittable`.
 
-Locked predicates using `mlock` and `br.lock` are supported as well as `Parameter`s.
+Locked predicates using `mlock` and `sl.lock` are supported as well as `Parameter`s.
 
 For definitions, the command tries to solve `Knowledge` by `solve_knowledge`,
 `Timeless` and `Typed` by `solve_TC`
@@ -41,7 +41,7 @@ The instances can be referred to by the convention `[Pred]_[instance type]`, e.g
 
 ## Examples:
 ```coq
-br.lock
+sl.lock
 Definition prim0R `{Σ : cpp_logic} {σ : genv} (q : cQp.t) : Rep := primR Tint q 0.
 #[only(timeless)] derive prim0R.
 ```

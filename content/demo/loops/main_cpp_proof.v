@@ -5,8 +5,8 @@
  * See the LICENSE-BedRock file in the repository root for details.
  *)
 
-Require Import bluerock.auto.cpp.proof.
-Require Import bluerock.cpp.demo.loops.main_cpp.
+Require Import skylabs.auto.cpp.proof.
+Require Import skylabs.cpp.demo.loops.main_cpp.
 
 Import auto_frac.
 
@@ -20,8 +20,8 @@ Section with_cpp.
      one of the two branches can not terminate normally, e.g. by ending in a
      `<break`, `continue`, `return`, or `throw`.
   |*)
-  #[local] Hint Resolve smash_delayed_case_no_join_B : db_bluerock_wp.
-  #[local] Hint Resolve vc_split.split_if : br_opacity.
+  #[local] Hint Resolve smash_delayed_case_no_join_B : db_skylabs_wp.
+  #[local] Hint Resolve vc_split.split_if : sl_opacity.
 
   (*| ## Verification of `while` loops |*)
 

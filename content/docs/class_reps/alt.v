@@ -1,8 +1,8 @@
 (*@HIDE@*)
 (*|
 First we setup our automation and use an example program: |*)
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 Implicit Type (σ : genv).
 (*@END-HIDE@*)
 
@@ -44,7 +44,7 @@ Record t : Type := Mk
 }.
 
 (** Then we can define the general class representation as follows: *)
-br.lock
+sl.lock
 Definition R `{Σ : cpp_logic} {σ} (q : cQp.t) (m : t): Rep :=
   structR "Point" q **
   _field "Point::x"  |-> intR q m.(p_x) **

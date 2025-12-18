@@ -25,8 +25,8 @@ the representation of the program state and how it evolves.
 |*)
 (*@HIDE@*)
 (* Setup the verification environment. *)
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 (* the code *)
 cpp.prog source prog cpp:{{

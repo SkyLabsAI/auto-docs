@@ -6,14 +6,14 @@
 
 (include_subdirs qualified)
 (coq.theory
- (name bluerock.cpp.docs)
+ (name skylabs.cpp.docs)
  (theories
-  ; bluerock.cpp.stdlib ; omitted for now
-  ; bluerock deps
+  ; skylabs.cpp.stdlib ; omitted for now
+  ; skylabs deps
   Stdlib Ltac2
   Lens Lens.Elpi
   stdpp iris
   Equations Equations.Prop Equations.Type
   elpi elpi_elpi elpi.apps.locker elpi.apps.NES
   ExtLib
-  bluerock))
+  skylabs))

@@ -4,9 +4,9 @@
  * See the LICENSE-BedRock file in the repository root for details.
  *)
 
-Require Import bluerock.auto.cpp.prelude.spec.
+Require Import skylabs.auto.cpp.prelude.spec.
 
-Require Import bluerock.cpp.demo.linked_list.linked_list_hpp.
+Require Import skylabs.cpp.demo.linked_list.linked_list_hpp.
 
 (*|
 ## Representation Predicates for the Node and the List
@@ -33,7 +33,7 @@ Section reps.
     structR "linked_list" q **
     pureR (root |-> nodesR q ls).
 End reps.
-#[global] Hint Opaque nodeR nodesR R : br_opacity typeclass_instances.
+#[global] Hint Opaque nodeR nodesR R : sl_opacity typeclass_instances.
 
 (*|
 ## Specifying Node

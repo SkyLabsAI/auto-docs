@@ -1,6 +1,6 @@
 ---
 title: Derive equivalences for predicates
-key: bluerock.auto.elpi.derive.equiv
+key: skylabs.auto.elpi.derive.equiv
 provides:
 - derive
 - equiv

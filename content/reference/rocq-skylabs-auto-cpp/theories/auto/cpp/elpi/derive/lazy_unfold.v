@@ -1,6 +1,6 @@
 ---
 title: Derive Lazy unfolding hints
-key: bluerock.auto.elpi.derive.lazy_unfold
+key: skylabs.auto.elpi.derive.lazy_unfold
 ---
 (*|
 :::warn

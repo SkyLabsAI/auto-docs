@@ -1,6 +1,6 @@
 ---
 title: Automatic Fractional Splitting
-key: bluerock.auto.cpp.lazy.auto_frac.hints
+key: skylabs.auto.cpp.lazy.auto_frac.hints
 ---
 (*|
 This file provides hints based on `AsFractional` and `AsCFractional` and meant to automate fractional splitting,

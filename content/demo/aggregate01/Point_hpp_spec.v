@@ -4,8 +4,8 @@
  * This software is distributed under the terms of the BedRock Open-Source License.
  * See the LICENSE-BedRock file in the repository root for details.
  *)
-Require Import bluerock.auto.cpp.specs.
-Require Import bluerock.cpp.demo.aggregate01.Point_hpp.
+Require Import skylabs.auto.cpp.specs.
+Require Import skylabs.cpp.demo.aggregate01.Point_hpp.
 
 #[local] Open Scope Z_scope.
 
@@ -21,7 +21,7 @@ Section with_Σ.
     _field "Point::x" |-> intR q m.(point_x) **
     _field "Point::y" |-> intR q m.(point_y) **
     structR "Point" q.
-  #[global] Hint Opaque PointR : typeclass_instances br_opacity.
+  #[global] Hint Opaque PointR : typeclass_instances sl_opacity.
   #[only(type_ptr,cfractional)] derive PointR.
 
   #[global] Instance : forall q m, Observe (type_ptrR _) (PointR q m) := _.

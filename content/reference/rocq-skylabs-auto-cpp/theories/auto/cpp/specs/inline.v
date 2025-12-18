@@ -1,6 +1,6 @@
 ---
 title: Inlining during verification
-key: bluerock.auto.cpp.specs.inline
+key: skylabs.auto.cpp.specs.inline
 ---
 (*|
 Use the class `ShouldInlineFunction` to mark a function as "inline during verification".

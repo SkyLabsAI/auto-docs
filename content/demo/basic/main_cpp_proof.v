@@ -16,9 +16,9 @@ you can try to specify and verify.
 |*)
 
 (*| Import the C++ verification environment |*)
-Require Import bluerock.auto.cpp.proof.
+Require Import skylabs.auto.cpp.proof.
 (*| Import the code that we are going to be verifying |*)
-Require Import bluerock.cpp.demo.basic.main_cpp.
+Require Import skylabs.cpp.demo.basic.main_cpp.
 
 (*| ## Automation setup
 
@@ -31,7 +31,7 @@ Import wp_path.WpPrimRSep.
     have join points, e.g. if at least one branch contains
     `return`, `break`, or `continue`.
 |*)
-#[local] Hint Resolve smash_delayed_case_B : br_opacity.
+#[local] Hint Resolve smash_delayed_case_B : sl_opacity.
 
 (*| ## Specifications |*)
 
@@ -160,7 +160,7 @@ End with_cpp.
 Module manually.
   (*| A simple `Rep`resentation predicate (aka class invariant) for
    `struct point`. |*)
-  br.lock
+  sl.lock
   Definition pointR `{Σ : cpp_logic} {σ : genv} (q : cQp.t) (m : Z * Z) :=
     structR "point" q **
     _field "point::x" |-> intR q (fst m) **

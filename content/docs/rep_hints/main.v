@@ -1,7 +1,7 @@
 (*| Here, we show some hints about `Rep`s that we can declare to get proofs unstuck.
  First we setup our automation and use an example program: |*)
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 (*| Define AST `source` containing our example C++ program.
 This is the same as in the [earlier tutorial](../../class_reps/main). |*)

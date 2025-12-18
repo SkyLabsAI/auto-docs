@@ -4,8 +4,8 @@
  * This software is distributed under the terms of the BedRock Open-Source License.
  * See the LICENSE-BedRock file in the repository root for details.
  *)
-Require Import bluerock.auto.cpp.proof.
-Require Import bluerock.cpp.demo.data_class.main_cpp.
+Require Import skylabs.auto.cpp.proof.
+Require Import skylabs.cpp.demo.data_class.main_cpp.
 
 (*| In many cases, our `class`es (especially `struct`) contain no real
    abstraction. Rather, they just bundle up some data.

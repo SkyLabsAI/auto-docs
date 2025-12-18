@@ -1,6 +1,6 @@
 ---
 title: Derive `Cancel` hints
-key: bluerock.auto.elpi.derive.cancel
+key: skylabs.auto.elpi.derive.cancel
 ---
 (*|
 :::warn

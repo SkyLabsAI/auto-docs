@@ -1,6 +1,6 @@
 ---
 title: The `verify` notation
-key: bluerock.auto.cpp.cpp_proof
+key: skylabs.auto.cpp.cpp_proof
 ---
 (*|
 

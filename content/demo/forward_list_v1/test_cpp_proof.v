@@ -11,9 +11,9 @@ This ensures memory safety.
 
 The specifications of the standard library will support functional correctness reasoning.
 |*)
-Require Import bluerock.auto.cpp.prelude.spec.
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.cpp.demo.forward_list_v1.test_cpp.
+Require Import skylabs.auto.cpp.prelude.spec.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.cpp.demo.forward_list_v1.test_cpp.
 
 Implicit Type (p : ptr).
 
@@ -39,7 +39,7 @@ NES.Begin std.forward_list.
   Notation itN := "std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>"%cpp_name.
 
   (*| Representation predicate for `forward_list<int>`. |*)
-  br.lock Definition R `{Σ : cpp_logic, σ : genv} (q : cQp.t) (xs : list Z): Rep :=
+  sl.lock Definition R `{Σ : cpp_logic, σ : genv} (q : cQp.t) (xs : list Z): Rep :=
     structR N q.
   #[only(type_ptr,cfracsplittable)] derive R.
   (** [b] is true for non-past-the-end iterators. *)
@@ -49,7 +49,7 @@ NES.Begin std.forward_list.
       `own` is a snapshot of the list model at the time that the iterator was created.
      `b = true` means that this iterator is not at the end.
   |*)
-  br.lock Definition itR `{Σ : cpp_logic, σ : genv}
+  sl.lock Definition itR `{Σ : cpp_logic, σ : genv}
       (own : option (ptr * cQp.t * list Z)) q (b : bool): Rep :=
     structR itN q.
   #[only(type_ptr,cfracsplittable)] derive itR.

@@ -13,8 +13,8 @@ void test(C c) {
 ```
 |*)
 (*@HIDE@*)
-Require Import bluerock.auto.cpp.prelude.proof.
-Require Import bluerock.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.auto.cpp.prelude.proof.
+Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 
 cpp.prog source prog cpp:{{
   struct C {};
@@ -23,7 +23,7 @@ cpp.prog source prog cpp:{{
   }
 }}.
 
-br.lock Definition CR `{Σ : cpp_logic} `{σ : genv} (q : cQp.t) : Rep :=
+sl.lock Definition CR `{Σ : cpp_logic} `{σ : genv} (q : cQp.t) : Rep :=
   structR "C" q.
 
 Section with_cpp.

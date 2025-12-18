@@ -1,6 +1,6 @@
 ---
 title: Derive `Fwd` hints
-key: bluerock.auto.elpi.derive.fwd
+key: skylabs.auto.elpi.derive.fwd
 ---
 (*|
 :::warn
