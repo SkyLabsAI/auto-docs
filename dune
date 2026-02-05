@@ -7,7 +7,7 @@
 (env
  (sl_timing
   (binaries
-   (../BRiCk/rocq-tools/bin/coqc_perf.exe as coqc))
+   (../BRiCk/rocq-tools/bin/rocq_perf.exe as rocq))
   (flags :standard %{read-lines:flags/ocamlc})
   (ocamlopt_flags :standard -O3 -unbox-closures)
   (rocq
