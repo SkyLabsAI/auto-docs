@@ -13,6 +13,7 @@ NES.Begin Point.
 
 Consider the following AST `source`, definining C++ class `Point`.
 |*)
+#[elaborate]
 cpp.prog source prog cpp:{{
   class Point {
     int x;
@@ -97,6 +98,7 @@ To continue, we abort the proof, and define AST `source1` with a fixed version o
 |*)
     Abort.
 
+    #[elaborate]
     cpp.prog source1 prog cpp:{{
       class Point {
         int x{0};

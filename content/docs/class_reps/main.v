@@ -23,6 +23,7 @@ Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 ## The Program
 
 Here, we define the AST `source` containing our example C++ program: |*)
+#[elaborate]
 cpp.prog source prog cpp:{{
   struct IntCell {
     int n{0};
