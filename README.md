@@ -16,7 +16,7 @@ npm run watch
 
 To add a new tutorial:
 
-- Create a folder under `fmdeps/micro-docs/content/docs/`
+- Create a folder under `fmdeps/auto-docs/content/docs/`
 - Add a `foo.v` file with the content, and a `foo.11tydata.json` file with
 metadata: the title is used at the top of the document, and
 `tags`/`requires`/`provides` are metadata that is not used yet.
