@@ -21,8 +21,13 @@ Check primR.
 
 (*|
 The second to last argument is a `cQp.t` which is a (`const`-annotated, the `c`) positive fraction (the `Qp`).
-For the purpose of sharing, we'll focus only on the `Qp`.
-When we write these in the common notation, we use `q$m` or `q$c`, `q` is the fraction.
+*)
+Print cQp.t.
+(* Record t : Set := mk { is_const : bool; frac : Qp }.*)
+
+(*| The `is_const` field is used to track whether the fraction is read-only (i.e. const) or mutable.
+When using notation, we use `q$m` or `q$c`, `q` is the fraction.
+For the purpose of sharing, we'll focus the dicussion on the `Qp`.
 
 ## Dividing Ownership
 The benefit of using fractions is that they can easily be split up and re-combined.
@@ -68,7 +73,7 @@ Goal forall (p : ptr) (q : Qp) (z : Z),
 Proof. work. Qed.
 (*|
 
-In general, all of the theorem that we proved in the previous section also hold for combining.
+In fact, all of the theorems that we proved in the previous section also hold in the inverse direction and can hence be stated as bi-entailments (notation `P -|- Q`).
 
 ## Consistency
 A crucial property of fractional ownership is that all of the ownership must be _consistent_.
@@ -85,6 +90,8 @@ Proof. (* ... proof elided ... *) (*@HIDE@*)
   inversion H0; subst. work $usenamed=true.
 (*@END-HIDE@*)Qed.
 (*|
+
+Here, operator `[| ... |]` injects a pure Rocq proposition into BRiCk's assertion language.
 
 Consistency is a powerful reasoning feature when reasoning through abstractions and concurrent invariants, but in simple sequential code it is mostly unnecessary.
 

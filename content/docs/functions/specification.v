@@ -1,6 +1,7 @@
 (*@HIDE@*)
 Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
 Require Import skylabs.auto.cpp.prelude.spec.
+Require Import skylabs.auto.cpp.prelude.proof.
 
 cpp.prog source prog cpp:{{
   const int foo = 3;
@@ -11,9 +12,9 @@ cpp.prog source prog cpp:{{
 
   int int_return();
 
-  void ref_arg(int& r);
+ /* void ref_arg(int& r) { r++; };
 
-  void rv_ref_arg(int&& r);
+  void rv_ref_arg(int&& r);*/
 }}.
 
 #[local] Open Scope Z_scope.
@@ -34,11 +35,13 @@ void int_arg(int x);
 
 int int_return();
 
-void ref_arg(int& r);
-
-void rv_ref_arg(int&& r);
 ```
 
+(*@HIDE@*)
+void ref_arg(int& r); (*Now discussed in verification.v*)
+
+void rv_ref_arg(int&& r); (*TODO: Give specs for rv_ref_arg or delete this function from the cpp.prog block at the beginning of this file. *)
+(*@END-HIDE@*)
 
 Function-level specifications are at the heart of modular verification.
 In BRiCk, function specifications are written in a syntax inspired by [Doxygen](https://www.doxygen.nl/) using `\` commands.
@@ -54,7 +57,7 @@ cpp.spec "test()" with
 (*|
 
 Note that the entire body of the specification -- the part between `with` and the terminal `dot` -- needs to be enclosed in parentheses.
-Furthermore, as the specification is defined in a Rocq section that has `test()`'s code module (`source`) as a context 
+Furthermore, as the specification is defined in a Rocq section that has `test()`'s code module (`source`) as a context
 assumption, we may omit both, the specification's nname and the module name from the `cpp.spec` definition.
 
 ## Returning Values - `\post[]`
@@ -129,13 +132,13 @@ cpp.spec "int_arg(int)" with
 (*|
 As with the other commands, the `{}`s introduce existential quantifiers.
 By convention, the name in the string should match the name of the formal, but this is not currently required.
+|*)
 
+(*|
 :::info
 `cpp.spec` is implicitly adding the pre- and post- ownership for the argument to this specification and can do this because primitives of this form are guaranteed to have trivial destructors.
-:::
-
 |*)
+
 (*@HIDE@*)
 End with_cpp.
-(* TODO: Give specs for  ref_arg and rv_ref_arg or delete these functions from the cpp.prog block at the beginning of this file. *)
 (*@END-HIDE@*)
