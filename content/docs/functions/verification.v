@@ -56,6 +56,12 @@ will return the sum as-is.
 `\require P` adds a pure Rocq proposition (`P : Prop`) as a pre-condition to
 the specification.
 
+A more idiomatic way to specify `add_spec`'s constraint is to say that `x+y` be a 
+{{ "valid" | terminology }} `int`:
+|*)
+  \require valid<"int"> (x + y)%Z
+(*|
+
 On the other hand, `add_unsigned_spec` does not require any condition on the
 unsigned integers `x` and `y`. Instead, it returns, in the post-condition, the
 sum of `x` and `y` potentially truncated to 32 bits (`trim 32 (x + y)`),
@@ -86,7 +92,7 @@ End with_cpp.
 
 (*|
 With the correct specifications and the fact that the code is very simple,
-the `go` tactics of the the SkyLabs' automation can discharged the proofs
+the `go` tactics of the SkyLabs automation can discharge the proofs
 without extra intervention.
 One can try to change the specifications, for example by removing the required
 resources or the `bitsize.bound` pre-condition, to see that the automation may
@@ -150,3 +156,21 @@ Section with_cpp.
   Example not_enough_resources_swap_not_ok : verify[source] not_enough_resources_swap_spec.
   Proof. verify_spec. go. Fail Qed. Abort.
 End with_cpp.
+(*|
+
+Specifications may contain multiple `\arg`, `\pre`, and `\require` clauses; resources specified
+in distinct `\pre` clauses are interpreted in separated fashion. Hence, 
+`not_enough_resources_swap_spec` implicitly desugars to (the less idiomatic)
+|*)
+cpp.spec "swap(int*, int* )" from source as not_enough_resources_swap_spec with (
+  \arg{px} "px" (Vptr px)
+  \arg{py} "py" (Vptr py)
+  \pre{x y} px |-> intR (1/2)$c x ** py |-> intR 1$m y
+  \post px |-> intR 1$m y ** py |-> intR 1$m x
+).
+(*|
+In contrast, only a single `\post` clause is permitted, so explicit separating conjunction is
+needed to specify existence of multiple resources in the post-condition.
+
+Note that the scope of a variable introduced using `{..}` in an `\arg` or `\pre` clause
+covers the remainder of the specification.

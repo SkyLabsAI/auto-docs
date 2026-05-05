@@ -53,6 +53,10 @@ cpp.spec "test()" with
   (\post emp (* ownership to return *)).
 (*|
 
+Note that the entire body of the specification -- the part between `with` and the terminal `dot` -- needs to be enclosed in parentheses.
+Furthermore, as the specification is defined in a Rocq section that has `test()`'s code module (`source`) as a context 
+assumption, we may omit both, the specification's nname and the module name from the `cpp.spec` definition.
+
 ## Returning Values - `\post[]`
 
 Functions that return values use a special form of `\post` where the return value is placed in `[]`.
@@ -75,8 +79,8 @@ Multiple quantifiers are supported as well as quantifiers with type annotations.
 (*@HIDE@*)Succeed(*@END-HIDE@*)
 cpp.spec "int_return()" with
   (\post{(v : Z) (w : Z)}[Vint (v + w)] emp).
-
 (*|
+
 ## Spatial Pre-conditions - `\pre`
 
 Spatial ownership can be added to the pre-condition of the function using `\pre`.
@@ -88,7 +92,7 @@ cpp.spec "test()" with
    \post emp).
 (*|
 This specification states that the function `test()` must be called with full (constant) ownership of the global variable `foo` which must have value `3`.
-`\pre` supports adding implicit existential quantifiers for logical variables using `{}` notation.
+`\pre` supports adding implicit existential quantifiers for logical variables using the `{}` notation.
 For example,
 |*)
 (*@HIDE@*)Succeed(*@END-HIDE@*)
@@ -97,6 +101,10 @@ cpp.spec "test()" with
    \post emp).
 
 (*|
+
+Note that BRiCk does not prove absence of memory leaks: the postcondition `emp` "forgets" the fact that the global variable `foo`
+is still allocated upon function exit but makes it inaccessible for the verification of the program continuation.
+
 ## Pure Pre-conditions - `\require`
 
 Non-spatial facts, e.g. `x < 5`, can be added to the pre-condition using `\require`.
@@ -129,4 +137,5 @@ By convention, the name in the string should match the name of the formal, but t
 |*)
 (*@HIDE@*)
 End with_cpp.
+(* TODO: Give specs for  ref_arg and rv_ref_arg or delete these functions from the cpp.prog block at the beginning of this file. *)
 (*@END-HIDE@*)
