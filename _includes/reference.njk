@@ -3,9 +3,9 @@
 {% block content %}
 <h1>{{ title }}</h1>
 
-{% if key %}
+{% if availableFrom or key %}
 <div class="alert alert-info" role="alert">
-  Available from {{ key | tick | md | safe }}.
+  Available from {{ (availableFrom or key) | tick | md | safe }}.
 </div>
 {% endif %}
 
