@@ -1,0 +1,19 @@
+; Copyright © 2022-2025 SkyLabs AI, Inc.
+;
+; This file is CONFIDENTIAL AND PROPRIETARY to SkyLabs AI. All rights reserved.
+;
+; Use of this file is only permitted subject to a separate written license agreement with SkyLabs AI.
+
+(include_subdirs qualified)
+(rocq.theory
+ (name skylabs.cpp.refman)
+ (theories
+  ; skylabs.cpp.stdlib ; omitted for now
+  ; skylabs deps
+  Stdlib Ltac2
+  Lens Lens.Elpi
+  stdpp iris
+  Equations Equations.Prop Equations.Type
+  elpi elpi_elpi elpi.apps.locker elpi.apps.NES
+  ExtLib
+  skylabs))
