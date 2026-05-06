@@ -5,7 +5,7 @@
   (alias test_ast)
   (deps (:input Point.hpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to Point_hpp.v.stderr (run cpp2v -v %{input} -o Point_hpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to Point_hpp.v.stderr (run cpp2v -v %{input} -o Point_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps Point.hpp))
 )
 (subdir basic
@@ -14,7 +14,7 @@
   (alias test_ast)
   (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
 )
 (subdir data_class
@@ -23,7 +23,7 @@
   (alias test_ast)
   (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
 )
 (subdir forward_list_v1
@@ -32,7 +32,7 @@
   (alias test_ast)
   (deps (:input test.cpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to test_cpp.v.stderr (run cpp2v -v %{input} -o test_cpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to test_cpp.v.stderr (run cpp2v -v %{input} -o test_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps test.cpp))
 )
 (subdir inline
@@ -41,7 +41,7 @@
   (alias test_ast)
   (deps (:input inline.hpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to inline_hpp.v.stderr (run cpp2v -v %{input} -o inline_hpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to inline_hpp.v.stderr (run cpp2v -v %{input} -o inline_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps inline.hpp))
 )
 (subdir linked_list
@@ -50,7 +50,7 @@
   (alias test_ast)
   (deps (:input linked_list.cpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to linked_list_cpp.v.stderr (run cpp2v -v %{input} -o linked_list_cpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to linked_list_cpp.v.stderr (run cpp2v -v %{input} -o linked_list_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps linked_list.cpp))
 )
 (subdir linked_list
@@ -59,7 +59,7 @@
   (alias test_ast)
   (deps (:input linked_list.hpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to linked_list_hpp.v.stderr (run cpp2v -v %{input} -o linked_list_hpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to linked_list_hpp.v.stderr (run cpp2v -v %{input} -o linked_list_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps linked_list.hpp))
 )
 (subdir loops
@@ -68,6 +68,6 @@
   (alias test_ast)
   (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
   (action
-  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward ))))
+  	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
 )
