@@ -20,6 +20,10 @@ import { markdownify, unmarkdownify, fileUtils } from './_11ty/filters.js';
 import navigation from "@11ty/eleventy-navigation";
 
 export default function (eleventyConfig) {
+  const devSiteTitlePrefix = '🛠️ ';
+  const inferredPrefix =
+    process.env.SITE_MODE === 'dev' ? devSiteTitlePrefix : '';
+
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(brokenLinks);
   eleventyConfig.addDataExtension('yaml', (contents) => {
@@ -27,6 +31,10 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addGlobalData('company', 'Skylabs AI'); 
   eleventyConfig.addGlobalData('copyrightYear', new Date().getFullYear());
+  eleventyConfig.addGlobalData(
+    'siteTitlePrefix',
+    process.env.SITE_TITLE_PREFIX ?? inferredPrefix
+  );
   eleventyConfig.addGlobalData('siteTitle', 'FM Docs');
   eleventyConfig.addGlobalData("docsTarBall", { path : 'docs', filename : "docs.tar.gz"});
   eleventyConfig.addTemplateFormats('v');
