@@ -1,18 +1,21 @@
 {% macro menuitem(elem, indent, current=null, ancestors=[]) %}
 {% if elem.children and 0 < (elem.children | length) %}
    
-       <li data-bs-toggle="collapse" data-bs-target="#{{ elem.title | slugify }}-collapse" class=" sidebar-child d-flex justify-content-between {{'sidebar-child-list' if indent == false }}">
+       <li class=" sidebar-child d-flex justify-content-between {{'sidebar-child-list' if indent == false }}">
   {% set is_current = elem.key == current.key or page.url == elem.url %}
   <a class="nav-link px-0" style="display: inline" href="{{ elem.url }}">
     {{ elem.title | md | safe }}
   </a>
   <button class="btn sidebar-toggle align-items-center rounded px-1"
-    
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#{{ elem.title | slugify }}-collapse"
+    aria-controls="{{ elem.title | slugify }}-collapse"
     {{ 'aria-expanded=true' if is_current }}>
   </button>
 </li>
 
-  <div class="collapse" id="{{ elem.title | slugify }}-collapse">
+  <div class="collapse{{ ' show' if is_current }}" id="{{ elem.title | slugify }}-collapse">
     <ul class="sidebar-toggle-nav list-unstyled fw-normal pb-1  small">
       {% set current = ancestors.pop() if is_current %}
 
