@@ -29,5 +29,5 @@ done
 find . -name '*.[ch]pp' |
 LC_ALL=C sort |
 while read i; do
-  ./cpp2v-dune-gen.sh -s -- $i -- -std=c++23 -stdlib=libc++ -fno-builtin-std-forward
+  ./cpp2v-dune-gen.sh -s -- $i -- -std=c++23 -stdlib=libc++
 done
