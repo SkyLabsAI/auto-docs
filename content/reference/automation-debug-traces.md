@@ -25,7 +25,7 @@ start with
 Use this page when you already know you want the command-level reference:
 
 - [Common case](#common-case)
-- [Invariants](#invariants)
+- [Best practices](#best-practices)
 - [Choosing the trace setting](#choosing-the-trace-setting)
 - [What each trace is good for](#what-each-trace-is-good-for)
 - [Useful variants](#useful-variants)
@@ -60,7 +60,7 @@ uses the separation-logic and typeclass hints without continuing to step the
 For other instrumented tactics, keep the same pattern but replace `work` with
 the tactic whose behavior you want to inspect.
 
-## Invariants
+## Best practices
 
 ### Set `SL Debug` before any `with_log`-style command
 

@@ -28,7 +28,7 @@ SkyLabs automation.
 - [Follow the diagnosis loop](#core-workflow):
   explain the local state first, then widen to deeper candidate causes only as
   needed.
-- [Jump to trace commands when needed](../../../reference/skylabs.auto/):
+- [Jump to trace commands when needed](../../../reference/automation-debug-traces/):
   use the reference page once the state alone is no longer explanatory.
 
 <h2 id="where-this-fits">Where this fits</h2>
@@ -44,8 +44,9 @@ Rocq already provides several automation layers for ordinary proof work:
 SkyLabs automation sits on top of that broader landscape for BRiCk-specific
 reasoning about separation logic, weakest preconditions, and proof-state
 normalization. It is also user-extensible: custom abstractions and
-representations can be connected to the automation with local hints and related
-mechanisms. See [Rep hints](../rep_hints/main.v) for one concrete entrypoint.
+representations can be connected to the automation with type class instances
+and other hints. See [Rep hints](../rep_hints/main.v) for one concrete entry
+point.
 
 For built-in Rocq automation debugging, see
 [typeclass search and `Set Typeclasses Debug`](https://rocq-prover.org/doc/master/refman/addendum/type-classes.html).
@@ -74,14 +75,17 @@ it run until the state becomes informative enough to diagnose.
 4. test the smallest local fix that could confirm or refute the suspected cause
    before widening scope
 
-Sometimes this shows that the issue is not automation at all. The real problem
-may be a [proof-strategy issue](./proof_strategy_gotchas.md), a specification
-or rep-predicate issue, or a plain bug in the model or code.
+This process can identify issues in the automation itself, but it can also
+reveal shortcomings in the current
+[proof strategy](./proof_strategy_gotchas.md), errors in the specification or
+rep predicates, or plain bugs in the model or code.
 
 <h2 id="read-the-state-before-the-traces">Read the state before the traces</h2>
 
-Start from the missing proof step visible in the current goal, not from the raw
-trace output.
+When the automation gets unexpectedly stuck, there is often one or more
+obviously right things to do next that the automation has either not attempted
+or not succeeded in doing. Start the investigation by stating that missing
+proof step from the current goal, not from the raw trace output.
 
 Ask first:
 
@@ -121,7 +125,7 @@ The standard BRiCk debugging progression is:
 3. inspect the resulting state and follow the
    [diagnosis loop](#core-workflow)
 4. if the state alone is not enough, use `with_log!` to generate
-   [Debug Traces for Automation](../../../reference/skylabs.auto/)
+   [Debug Traces for Automation](../../../reference/automation-debug-traces/)
 
 During exploratory proofs, or while developing automation for a new
 abstraction, try the smallest local remediation first: manual unfolding,
@@ -130,8 +134,8 @@ blocker before you change the automation itself.
 
 ## Candidate next actions
 
-- [Debug Traces for Automation](../../../reference/skylabs.auto/):
-  commands, flags, invariants, and variants for `Set Typeclasses Debug`,
+- [Debug Traces for Automation](../../../reference/automation-debug-traces/):
+  commands, flags, best practices, and variants for `Set Typeclasses Debug`,
   `Set SL Debug`, and `with_log`.
 - [Proof Strategy Gotchas](./proof_strategy_gotchas.md):
   when the state is technically consistent, but the proof has drifted onto a

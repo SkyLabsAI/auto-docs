@@ -13,13 +13,15 @@ Assumes you are already comfortable reading BRiCk proof states and switching
 between ordinary Rocq tactics and SkyLabs automation when needed.
 </p>
 
-This page is for proofs that are technically advancing, but are getting much
-rougher than expected because the current proof path is poorly aligned with the
-surrounding proof mode, automation, or goal shape.
-
-Many BRiCk proof families have a practical happy path. Other locally legal
-steps can steer the proof into states that are still valid, but much more
-manual, brittle, or opaque than necessary.
+On this page, we focus on proofs in which the progress is slower or more
+tortuous than one would expect. Sometimes, it happens because, although a
+given proof plan can be enacted in multiple ways, each one may not be equally
+well supported by the Skylabs automation. At other times, automation support
+exists for our chosen technique, but the automation needs information about
+some of our predicates, functions or types in order to make use of them. At
+other times still, our proof state has multiple arithmetic expressions that are
+provably equal but their syntactic differences prevent the automation from
+using the two together.
 
 ## Practical heuristic
 
@@ -101,6 +103,6 @@ goal directly.
 - [Diagnosing Surprising or Incorrect Proof-State Transitions](./automation_debugging.md):
   when the main issue is how automation changed the state, not the proof path
   you chose.
-- [Debug Traces for Automation](../../../reference/skylabs.auto/):
+- [Debug Traces for Automation](../../../reference/automation-debug-traces/):
   when the proof state alone is not enough and you need the concrete trace
   commands, flags, or output modes.
