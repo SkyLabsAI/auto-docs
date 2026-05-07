@@ -3,5 +3,5 @@ tags:
   - "common_errors"
 eleventyNavigation:
   key: missing-type-instances
-  parent : troubleshooting
+  parent : automation-debugging
   order : 200
