@@ -26,6 +26,8 @@ cpp.prog source prog cpp:{{
     *px = *py;
     *py = t;
   }
+
+  void ref_arg(int& r) { r++; };
 }}.
 
 (*|
@@ -55,6 +57,18 @@ That is, `x + y` should be in the range `[-2^31,2^31)`. As such, the function
 will return the sum as-is.
 `\require P` adds a pure Rocq proposition (`P : Prop`) as a pre-condition to
 the specification.
+
+A more idiomatic way to specify `add_spec`'s constraint is to say that `x+y` is a
+{{ "valid" | terminology }} `int`:
+|*)
+cpp.spec "add(int, int)" from source as add_spec' with (
+  \arg{x} "x" (Vint x)
+  \arg{y} "y" (Vint y)
+  \require valid<"int"> (x + y)%Z
+  \post[Vint (x + y)] emp
+).
+
+(*|
 
 On the other hand, `add_unsigned_spec` does not require any condition on the
 unsigned integers `x` and `y`. Instead, it returns, in the post-condition, the
@@ -86,7 +100,7 @@ End with_cpp.
 
 (*|
 With the correct specifications and the fact that the code is very simple,
-the `go` tactics of the the SkyLabs' automation can discharged the proofs
+the `go` tactics of the SkyLabs automation can discharge the proofs
 without extra intervention.
 One can try to change the specifications, for example by removing the required
 resources or the `bitsize.bound` pre-condition, to see that the automation may
@@ -150,3 +164,44 @@ Section with_cpp.
   Example not_enough_resources_swap_not_ok : verify[source] not_enough_resources_swap_spec.
   Proof. verify_spec. go. Fail Qed. Abort.
 End with_cpp.
+(*|
+
+Specifications may contain multiple `\arg`, `\pre`, and `\require` clauses; resources specified
+in distinct `\pre` clauses are interpreted in separated fashion. Hence,
+`not_enough_resources_swap_spec` implicitly desugars to (the less idiomatic)
+|*)
+cpp.spec "swap(int*, int* )" from source as not_enough_resources_swap_spec' with (
+  \arg{px} "px" (Vptr px)
+  \arg{py} "py" (Vptr py)
+  \pre{x y} px |-> intR (1/2)$c x ** py |-> intR 1$m y
+  \post px |-> intR 1$m y ** py |-> intR 1$m x
+).
+(*|
+In contrast, only a single `\post` clause is permitted, so explicit separating conjunction is
+needed to specify existence of multiple resources in the post-condition.
+
+Note that the scope of a variable introduced using `{..}` in an `\arg` or `\pre` clause
+covers the remainder of the specification.
+
+## By-reference arguments
+
+Formal parameters that are passed by reference, e.g. `int&` can be specified using `\arg` with the `Vref` value constructor,
+thus making explicit that the value is a proper non-null reference.
+|*)
+
+cpp.spec "ref_arg(int&)" from source as ref_arg_spec with
+  (\arg{p} "x" (Vref p)
+   \pre{v} p |-> intR 1$m v
+   \require valid<"int"> (v + 1)%Z
+   \post p |-> intR 1$m (v + 1)%Z
+  ).
+
+(*@HIDE@*)
+Section with_cpp.
+  Context `{Σ : cpp_logic}.
+  Context `{MOD : !source ⊧ σ}.
+
+  Lemma ref_arg_ok : verify[source] "ref_arg(int&)".
+  Proof using MOD _Σ thread_info Σ σ. verify_spec. go. Qed.
+End with_cpp.
+(*@END-HIDE@*)

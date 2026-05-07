@@ -39,6 +39,8 @@ cpp.prog source prog cpp:{{
 }}.
 
 (*|
+The `#[elaborate]` decoration instructs `cpp.prog` to implictly add definitions of default (de)constructors etc. to the class definition.
+
 ## The Model
 
 To formalize the type `IntCell`, we define a type `IntCellT` as the _model_ of `IntCell`. A value
@@ -140,8 +142,12 @@ Section with_cpp.
     \pre{m} this |-> IntCellR 1$m m
     \post emp).
 
-  (*| Next, we have the specification of a method that does nothing.
-  `\prepost P` means that `P` is used in both the pre-condition and the post-condition of the specification. |*)
+  (*| Next, we have the specification of a method that has no externally visible effect on the receiver object's
+  abstract state, neither consumes nor produces resources other than the receiver object, is unconditionally safe, but may non-terminate.
+  `\prepost P` means that `P` is used in both the pre-condition and the post-condition of the specification. 
+  The existential quantification over `q` and `m` refers to the precondition, with scope that additionally covers the postcondition.
+  Note that the use of `\prepost` does not count as an occurrence of `\post`, so the specification must include a somewhat spurious
+  explicit `\post` clause. |*)
   cpp.spec "IntCell::method() const" as method_spec with (
     \this this
     (* Since this method does _not_ modify its receiver, this method doesn't
@@ -153,6 +159,10 @@ Section with_cpp.
   cpp.spec "test()" as test_spec with (
     \post emp).
 
+  (*| As `m` is an automatic variable in the body of `test`, the (stack-allocated) object is implicitly deallocated during function return so the 
+  use of `\post emp` in `test_spec` does not constitute  a specification-level space leak.
+  |*)
+  
 (*@HIDE@*)
 End with_cpp.
 (*@END-HIDE@*)

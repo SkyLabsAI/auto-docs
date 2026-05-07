@@ -52,7 +52,7 @@ Section with_cpp.
 ## Exploring a C++ Function with SkyLabs Automation
 
 With the specification, we can step through the function using
-the SkyLabs automation. The automation is structured to work like symbolic
+the SkyLabs automation. The automation is structured to work like a symbolic
 debugger. To start, we set up a proof of the function:
 |*)
   Lemma test_ok : verify[source] "test()".
