@@ -1,0 +1,10 @@
+---
+title: "Inside the `sep` Tactic"
+tags:
+- learn
+requires: []
+provides:
+- automation
+eleventyNavigation:
+  order: 201
+  parent: learn
