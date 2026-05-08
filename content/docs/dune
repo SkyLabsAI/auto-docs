@@ -16,4 +16,5 @@
   Equations Equations.Prop Equations.Type
   elpi elpi_elpi elpi.apps.locker elpi.apps.NES
   ExtLib
-  skylabs))
+  skylabs
+  skylabs_auto_core.examples))
