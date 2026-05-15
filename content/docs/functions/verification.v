@@ -34,19 +34,17 @@ cpp.prog source prog cpp:{{
 We can specify our functions as follows.
 |*)
 
-cpp.spec "add(int, int)" from source as add_spec with (
-  \arg{x} "x" (Vint x)
-  \arg{y} "y" (Vint y)
-  (* - 2^31 ≤ x + y ≤ 2^31 - 1 *)
-  \require bitsize.bound bitsize.W32 Signed (x + y)
-  \post[Vint (x + y)] emp
-).
+cpp.spec "add(int, int)" from source with
+  (\arg{x} "x" (Vint x)
+   \arg{y} "y" (Vint y)
+   \require valid<"int"> (Vint (x + y))
+   \post[Vint (x + y)] emp
+  ).
 
-cpp.spec "add(unsigned int, unsigned int)" from source as add_unsigned_spec with (
-  \arg{x} "x" (Vint x)
-  \arg{y} "y" (Vint y)
-  \post[Vint (trim 32 (x + y))] emp
-).
+cpp.spec "add(unsigned, unsigned)" from source with
+  (\arg{x} "x" (Vint x)
+   \arg{y} "y" (Vint y)
+   \post[Vint (trim 32 (x + y))] emp).
 
 (*|
 Here, `add_spec` requires strong conditions on the signed arguments `x` and `y`:
@@ -58,7 +56,7 @@ the specification.
 
 On the other hand, `add_unsigned_spec` does not require any condition on the
 unsigned integers `x` and `y`. Instead, it returns, in the post-condition, the
-sum of `x` and `y` potentially truncated to 32 bits (`trim 32 (x + y)`),
+sum of `x` and `y` truncated to 32 bits (`trim 32 (x + y)`),
 covering the case where the sum overflows.
 In case that we know that the sum does not overflow, i.e., `x + y < 2^32`, we can
 use `modulo.useless_trim` to get the equality `trim 32 (x + y) = x + y`.
@@ -80,7 +78,7 @@ Section with_cpp.
     verify_spec. go.
   Qed.
 
-  Lemma add_unsigned_spec_ok : verify[source] add_unsigned_spec.
+  Lemma add_unsigned_spec_ok : verify[source] "add(unsigned, unsigned)".
   Proof. verify_spec. go. Qed.
 End with_cpp.
 
@@ -89,7 +87,7 @@ With the correct specifications and the fact that the code is very simple,
 the `go` tactics of the the SkyLabs' automation can discharged the proofs
 without extra intervention.
 One can try to change the specifications, for example by removing the required
-resources or the `bitsize.bound` pre-condition, to see that the automation may
+resources or the `valid<"int">` pre-condition, to see that the automation may
 fail to finish the proofs.
 
 Note that we can use the `verify[source]` notation with either the C++ function
