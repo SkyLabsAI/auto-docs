@@ -1,0 +1,11 @@
+---
+title: "`sep` Tactic manual"
+tags:
+- learn
+requires: []
+provides:
+- automation
+eleventyNavigation:
+  order: 200
+  parent: learn
+
