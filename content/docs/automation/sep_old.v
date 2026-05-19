@@ -26,11 +26,21 @@ The process terminates when no progress is possible or when the goal is solved.
 conclusion.
 In an Iris goal, assumptions in `Γp` can be duplicated or discarded
 freely, unlike assumptions in `Γs`.
+Plain entailments are converted to Iris goals automatically, as if by
+`iStartProof`.
 
 Iris assumptions can be named or anonymous; by default `sep` will preserve named
 assumptions unchanged, but `$usenamed=true` will override this behavior.
 
-`sep` will eliminate separating conjunctions in assumptions.
+<!-- to move -->
+`sep` will eliminate existentials and conjunctions in assumptions when possible.
+That includes separating conjunctions in the spatial context, conjunctions in
+the intuitionistic context, and separation conjunctions in the intuitionistic
+context if the bi in use is `BiPositive`.
+
+`sep` bubbles up existentials to the top of the conclusion (but will not treat
+this as progress, i.e. the bubbling up is not committed unless actual progress
+is made in another fashion).
 
 ## Proof strategy
 
