@@ -9,20 +9,28 @@
  (name skylabs.cpp.demo) ; logical path of this library
  ; (package rocq-skylabs-cpp-demo) ; avoid installing
  (theories
-  ; skylabs deps
-  Stdlib Ltac2
-  Lens Lens.Elpi
-  stdpp iris
-  Equations Equations.Prop Equations.Type
-  elpi elpi_elpi elpi.apps.locker elpi.apps.NES
+  Stdlib
+  Ltac2
+  Lens
+  Lens.Elpi
+  stdpp
+  iris
+  Equations
+  Equations.Prop
+  Equations.Type
+  elpi
+  elpi_elpi
+  elpi.apps.locker
+  elpi.apps.NES
   ExtLib
-  ; skylabs.prelude skylabs.iris.extra skylabs.upoly skylabs.lang.cpp
-  ; skylabs.ltac2.logger skylabs.ltac2.extra
-  ; skylabs.elpi.extra skylabs.elpi.cpp
-  ; skylabs.auto.core
-  ; skylabs deps END
   skylabs
-  skylabs.cpp.stdlib))
+  skylabs.cpp.stdlib
+  ; transitive dependencies
+  Flocq elpi.apps.NES.elpi elpi.apps.derive elpi.apps.derive.elpi
+  elpi.apps.locker.elpi skylabs.auto.core skylabs.elpi.cpp skylabs.elpi.extra
+  skylabs.iris.extra skylabs.lang.cpp skylabs.ltac2.extra skylabs.ltac2.logger
+  skylabs.prelude skylabs.upoly tactic_classes
+ ))
 
 (include dune.inc)
 
