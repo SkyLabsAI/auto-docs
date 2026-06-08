@@ -8,12 +8,24 @@
 (rocq.theory
  (name skylabs.cpp.docs)
  (theories
-  ; skylabs.cpp.stdlib ; omitted for now
-  ; skylabs deps
-  Stdlib Ltac2
-  Lens Lens.Elpi
-  stdpp iris
-  Equations Equations.Prop Equations.Type
-  elpi elpi_elpi elpi.apps.locker elpi.apps.NES
+  Stdlib
+  Ltac2
+  Lens
+  Lens.Elpi
+  stdpp
+  iris
+  Equations
+  Equations.Prop
+  Equations.Type
+  elpi
+  elpi_elpi
+  elpi.apps.locker
+  elpi.apps.NES
   ExtLib
-  skylabs))
+  skylabs
+  ; transitive dependencies
+  Corelib elpi.apps.NES.elpi elpi.apps.derive elpi.apps.derive.elpi
+  elpi.apps.locker.elpi skylabs.auto.core skylabs.elpi.cpp skylabs.elpi.extra
+  skylabs.iris.extra skylabs.lang.cpp skylabs.ltac2.extra skylabs.ltac2.logger
+  skylabs.prelude skylabs.upoly tactic_classes upoly_lib
+ ))
