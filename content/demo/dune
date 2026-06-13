@@ -29,7 +29,7 @@
   Flocq elpi.apps.NES.elpi elpi.apps.derive elpi.apps.derive.elpi
   elpi.apps.locker.elpi skylabs.auto.core skylabs.elpi.cpp skylabs.elpi.extra
   skylabs.iris.extra skylabs.lang.cpp skylabs.ltac2.extra skylabs.ltac2.logger
-  skylabs.prelude skylabs.upoly tactic_classes
+  skylabs.plib skylabs.prelude skylabs.simp skylabs.upoly tactic_classes
  ))
 
 (include dune.inc)
