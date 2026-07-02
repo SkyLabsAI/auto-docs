@@ -1,5 +1,5 @@
 (*@HIDE@*)
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 Require Import skylabs.auto.cpp.prelude.spec.
 
 cpp.prog source prog cpp:{{

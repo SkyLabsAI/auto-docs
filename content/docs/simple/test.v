@@ -16,7 +16,7 @@ Import the C++ verification environment:
 Require Import skylabs.auto.cpp.prelude.proof.
 
 (*| Import a command to specify our C++ program "inline". |*)
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 
 (*|
 

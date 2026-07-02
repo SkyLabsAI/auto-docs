@@ -26,7 +26,7 @@ the representation of the program state and how it evolves.
 (*@HIDE@*)
 (* Setup the verification environment. *)
 Require Import skylabs.auto.cpp.prelude.proof.
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 
 (* the code *)
 cpp.prog source prog cpp:{{

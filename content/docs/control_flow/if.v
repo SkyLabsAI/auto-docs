@@ -1,6 +1,6 @@
 (*@HIDE@*)
 Require Import skylabs.auto.cpp.prelude.proof.
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 
 cpp.prog source prog cpp:{{
   int cond(bool test, int thn, int els) {

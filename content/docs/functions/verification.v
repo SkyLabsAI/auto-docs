@@ -9,7 +9,7 @@ Import the C++ verification environment:
 Require Import skylabs.auto.cpp.prelude.proof.
 
 (*| Import the command `cpp.prog` to inline our C++ functions in Rocq. |*)
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 
 (*| Define AST `source` containing our example C++ functions. |*)
 cpp.prog source prog cpp:{{
