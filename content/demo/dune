@@ -22,7 +22,6 @@
   elpi_elpi
   elpi.apps.locker
   elpi.apps.NES
-  ExtLib
   skylabs
   skylabs.cpp.stdlib
   ; transitive dependencies
