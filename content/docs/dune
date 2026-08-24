@@ -21,7 +21,6 @@
   elpi_elpi
   elpi.apps.locker
   elpi.apps.NES
-  ExtLib
   skylabs
   ; transitive dependencies
   Flocq elpi.apps.NES.elpi elpi.apps.derive elpi.apps.derive.elpi
