@@ -2,7 +2,7 @@
 In this tutorial, we learn how to specify a simple loop invariant.
 |*)
 Require Import skylabs.auto.cpp.prelude.proof.
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 
 (*| The AST `source` contains our example C++ loop, which increments
 `0` for 10 times. |*)

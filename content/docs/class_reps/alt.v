@@ -2,7 +2,7 @@
 (*|
 First we setup our automation and use an example program: |*)
 Require Import skylabs.auto.cpp.prelude.proof.
-Require Import skylabs.lang.cpp.parser.plugin.cpp2v.
+Require Import skylabs.prog.cpp.plugin.
 Implicit Type (σ : genv).
 (*@END-HIDE@*)
 
