@@ -43,8 +43,10 @@ We must first specify what the `test` function does.
 cpp.spec "test()" from source as test_spec with
   (\post emp).
 (*|
-This specification states that `test()` does nothing.
+This specification states that `test()` does not require any {{ "resource" | terminology }}s; it may or may not terminate but is always {{ "safe" | terminology }}.
 The `\post emp` tells you that the function doesn't return any {{ "resource" | terminology }}, but we'll get into that more later.
+The first item following the `cpp.spec` syntax arises from the function's signature by removing the return type (incl. modifiers) and the formal
+parameter names (incl. whitespaces separating the names from from types), but not the formal arguments' types or modifiers or the commas separating formal parameters.
 
 ## Verifying the Function
 
@@ -54,7 +56,8 @@ Lemma test_ok : verify[source] "test()".
 Proof.
 (*|
 This sets up a theorem for our function that states that the function satisfies the specification, and that invoking the function
-as specified will not produce any {{ "undefined behavior" | terminology }}.
+as specified will not produce any {{ "undefined behavior" | terminology }}. As `test_spec` is the only specification for `test()`
+in the specification module `source` the theorem statement need not mention it.
 
 Since this is a particularly simple function, the proof is also simple. This proceeds in two stages:
 1. We use `verify_spec` to begin the proof: our goal becomes a goal about the concrete function body.

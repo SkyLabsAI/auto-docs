@@ -17,7 +17,6 @@ Context `{Σ : cpp_logic} `{MOD : source ⊧ σ}.
 (*|
 In this tutorial, we learn how to verify code with `if`.
 For this, we'll use the following function which acts like an `if`.
-The specification that we will be proving is written in the comment.
 
 ```cpp
 int cond(bool test, int thn, int els) {
@@ -128,3 +127,11 @@ We will discuss specifying "join points" in a subsequent tutorial.
 (*@HIDE@*)
 End with_cpp.
 (*@END-HIDE@*)
+(*|
+
+If case splitting is expected to be harmless for all conditionals in a proof, the following
+declarations may be considered:
+
+|*)
+#[local] Hint Resolve delayed_case.smash_delayed_case_B | 1000 : br_hints.
+#[local] Hint Resolve delayed_case.expr_join.smash_delayed_case_B | 1000 : br_hints.

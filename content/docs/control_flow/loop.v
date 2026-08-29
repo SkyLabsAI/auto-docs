@@ -41,7 +41,6 @@ Section with_cpp.
     - (* Less than 10, increment *) go.
     - (* Not less than 10, break *) go.
   Qed.
-End with_cpp.
 
 (*|
 `go` will not solve the whole proof on its own.
@@ -61,13 +60,13 @@ and leaves us with the goal of the loop's conditional `(i < 10)`.
 Here, we use the `wp_if` tactic to make the case distinction.
 - If the conditional holds, we enter the loop iteration, and we have
 the full mutable permission of `"i"` to increment it by `1`.
-That is, the loop body turns `_local ρ "i" |-> intR 1$m i` into 
+That is, the loop body turns `_local ρ "i" |-> intR 1$m i` into
 `_local ρ "i" |-> intR 1$m i + 1`.
 Note that if this is the last loop iteration, we will then have `i + 1 = 10`,
 which is still sufficient to re-establish the loop invariant with `i + 1 <= 10`.
 - If the conditional does not hold, we have `_local ρ "i" |-> intR 1$m i` and
 `¬ i < 10` and the loop terminates.
-Note that in this case wealso  have `i <= 10` from the loop invariant
+Note that in this case we also  have `i <= 10` from the loop invariant
 (established by the last loop iteration), so we can
 deduce `i = 10` as well as `_local ρ "i" |-> intR 1$m 10`.
 This means that `return i` will read `10` from the local variable and
@@ -75,4 +74,30 @@ the function returns `10`.
 
 Note that in both branches, `go` can perform the reasoning that we explained
 above on its own, because `go` has been taught about basic arithmetic reasoning.
+
+The `=> Lt10' decoration of `wp_if` is an ssreflect-style `intro` which insert the
+named hypotheses `Lt10: (t < 10)%Z` and `Lt10: t = 10%Z` in the proof states of subgoals.
+
+Using the hints for aggressive case splits discussed in the previous section are enabled,
+the proof can be simplified as follows
+
+|*)
+
+#[local] Hint Resolve delayed_case.smash_delayed_case_B | 1000 : br_hints.
+#[local] Hint Resolve delayed_case.expr_join.smash_delayed_case_B | 1000 : br_hints.
+  Lemma loop_ok': verify[source] "loop()".
+  Proof using MOD.
+    verify_spec. go.
+    (* specifying a loop invariant *)
+    wp_while (fun ρ => ∃ i, _local ρ "i" |-> intR 1$m i ** [| (i <= 10)%Z |])%I.
+    go.
+  Qed.
+End with_cpp.
+
+(*|
+
+The parsing scope annotator `%I` is typical for loop invariants and facilitates their
+type-correct interpretion by Rocq.
+
+We will discuss an alternative form of loop annotations, "loop specifications", in a future tutorial.
 |*)
