@@ -3,7 +3,7 @@
  (rule
   (targets Point_hpp.v.stderr Point_hpp.v)
   (alias test_ast)
-  (deps (:input Point.hpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input Point.hpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to Point_hpp.v.stderr (run cpp2v -v %{input} -o Point_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps Point.hpp))
@@ -12,7 +12,7 @@
  (rule
   (targets main_cpp.v.stderr main_cpp.v)
   (alias test_ast)
-  (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input main.cpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
@@ -21,7 +21,7 @@
  (rule
   (targets main_cpp.v.stderr main_cpp.v)
   (alias test_ast)
-  (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input main.cpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
@@ -30,7 +30,7 @@
  (rule
   (targets test_cpp.v.stderr test_cpp.v)
   (alias test_ast)
-  (deps (:input test.cpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input test.cpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to test_cpp.v.stderr (run cpp2v -v %{input} -o test_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps test.cpp))
@@ -39,7 +39,7 @@
  (rule
   (targets inline_hpp.v.stderr inline_hpp.v)
   (alias test_ast)
-  (deps (:input inline.hpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input inline.hpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to inline_hpp.v.stderr (run cpp2v -v %{input} -o inline_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps inline.hpp))
@@ -48,7 +48,7 @@
  (rule
   (targets linked_list_cpp.v.stderr linked_list_cpp.v)
   (alias test_ast)
-  (deps (:input linked_list.cpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input linked_list.cpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to linked_list_cpp.v.stderr (run cpp2v -v %{input} -o linked_list_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps linked_list.cpp))
@@ -57,7 +57,7 @@
  (rule
   (targets linked_list_hpp.v.stderr linked_list_hpp.v)
   (alias test_ast)
-  (deps (:input linked_list.hpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input linked_list.hpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to linked_list_hpp.v.stderr (run cpp2v -v %{input} -o linked_list_hpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps linked_list.hpp))
@@ -66,7 +66,7 @@
  (rule
   (targets main_cpp.v.stderr main_cpp.v)
   (alias test_ast)
-  (deps (:input main.cpp) (glob_files_rec ../*.hpp) (universe))
+  (deps (:input main.cpp) (glob_files_rec ../*.hpp))
   (action
   	 (with-stderr-to main_cpp.v.stderr (run cpp2v -v %{input} -o main_cpp.v  -- -std=c++23 -stdlib=libc++ ))))
  (alias (name srcs) (deps main.cpp))
