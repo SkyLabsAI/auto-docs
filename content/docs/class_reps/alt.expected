@@ -1,0 +1,25 @@
+1 goal
+  
+  thread_info : biIndex
+  _Σ : gFunctors
+  Σ : cpp_logic thread_info _Σ
+  σ : genv
+  _H_ : source ⊧ σ
+  _PostPred_ : ptr → mpred
+  this : ptr
+  PostCond : PostCondition
+  GUARDS : GWs.GUARDS
+  _x_0 : valid<"void"> Vvoid
+  ============================
+  _ : denoteModule source
+  _ : valid_ptr this
+  _ : this
+      |-> svalid_members "Point"
+            [(Nid "x", "int"%cpp_type); (Nid "y", "int"%cpp_type)]
+  _ : type_ptr "Point" this
+  --------------------------------------□
+  _ : this ,, o_field σ "Point::x" |-> uninitR "int" 1$m
+  _ : this ,, o_field σ "Point::y" |-> uninitR "int" 1$m
+  --------------------------------------∗
+  this ,, o_field σ "Point::y" |-> intR 1$m 0 ∗
+  this ,, o_field σ "Point::x" |-> intR 1$m 0 

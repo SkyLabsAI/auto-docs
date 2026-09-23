@@ -1,0 +1,53 @@
+Notation primR := @primR
+Expands to: Notation skylabs.lang.cpp.logic.heap_pred.primR
+Declared in
+library skylabs.lang.cpp.logic.heap_pred, line 112, characters 0-29
+
+primR.body :
+∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
+  genv → type → cQp.t → val → Rep
+
+primR.body is not universe polymorphic
+Arguments primR.body {thread_info _Σ Σ σ} ty%_cpp_type_scope q%_cQp_scope v
+Expands to: Constant skylabs.lang.cpp.logic.heap_pred.prim.primR.body
+Declared in
+library skylabs.lang.cpp.logic.heap_pred.prim, line 38, characters 0-139
+intR 1$m 3
+     : Rep
+charR 1$m 65
+     : Rep
+longR 1$c 1000
+     : Rep
+Notation intR q v := (primR "int" q v)
+Notation ulongR q v := (primR "unsigned long" q v)
+Notation ulonglongR q v := (primR "unsigned long long" q v)
+Notation charR q v := (primR "char" q (Vchar v))
+Notation wcharR q v := (primR "wchar_t" q (Vchar v))
+Notation uninitR := @uninitR
+Expands to: Notation skylabs.lang.cpp.logic.heap_pred.uninitR
+Declared in
+library skylabs.lang.cpp.logic.heap_pred, line 108, characters 0-35
+
+uninitR.body :
+∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
+  genv → type → cQp.t → Rep
+
+uninitR.body is not universe polymorphic
+Arguments uninitR.body {thread_info _Σ Σ σ} ty%_cpp_type_scope q%_cQp_scope
+Expands to: Constant skylabs.lang.cpp.logic.heap_pred.uninit.uninitR.body
+Declared in
+library skylabs.lang.cpp.logic.heap_pred.uninit, line 23, characters 0-111
+Notation anyR := @anyR
+Expands to: Notation skylabs.lang.cpp.logic.heap_pred.anyR
+Declared in
+library skylabs.lang.cpp.logic.heap_pred, line 113, characters 0-26
+
+anyR.body :
+∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
+  genv → type → cQp.t → Rep
+
+anyR.body is not universe polymorphic
+Arguments anyR.body {thread_info _Σ Σ σ} ty%_cpp_type_scope q%_cQp_scope
+Expands to: Constant skylabs.lang.cpp.logic.heap_pred.any.anyR.body
+Declared in
+library skylabs.lang.cpp.logic.heap_pred.any, line 30, characters 0-129
