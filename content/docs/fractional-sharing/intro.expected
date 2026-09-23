@@ -1,0 +1,2 @@
+primR
+     : type → cQp.t → val → Rep

@@ -1,0 +1,8 @@
+modulo.useless_trim :
+∀ (a : Z) (bits : N), 0 ≤ a < 2 ^ bits → a = trim bits a
+
+modulo.useless_trim is not universe polymorphic
+Arguments modulo.useless_trim a%_Z_scope bits%_N_scope _
+modulo.useless_trim is opaque
+Expands to: Constant skylabs.auto.pure.modulo.useless_trim
+Declared in library skylabs.auto.pure.modulo, line 222, characters 16-28
