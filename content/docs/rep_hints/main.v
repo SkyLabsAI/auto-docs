@@ -43,7 +43,7 @@ Section with_cpp.
     (\post emp).
 
   Lemma test_ok : verify[source] test_spec.
-  Proof.
+  Proof using MOD.
     verify_spec; go.
     (*| TODO: explain here the goals we're stuck on, and the hints we need. |*)
 
