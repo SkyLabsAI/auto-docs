@@ -8,6 +8,7 @@
 (rocq.theory
  (name skylabs.cpp.demo) ; logical path of this library
  ; (package rocq-skylabs-cpp-demo) ; avoid installing
+ (generate_project_file)
  (theories
   Stdlib
   Ltac2
