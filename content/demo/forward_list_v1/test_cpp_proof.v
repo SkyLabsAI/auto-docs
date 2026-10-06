@@ -220,7 +220,6 @@ Section with_Σ.
     Lemma test_iterators_ok : verify[source] test_iterators.
     Proof.
       verify_spec. go.
-      progress name_locals.
 
       wp_for (fun ρ =>
           \pre{b} __begin0_addr |-> itR ?[m] 1$m b
