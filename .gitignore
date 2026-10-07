@@ -18,6 +18,7 @@ Thumbs.db
 # Rocq
 .lia.cache
 .nia.cache
+_RocqProject
 
 # Archives
 *.tar.gz
