@@ -74,12 +74,12 @@ Section with_cpp.
   Context `{MOD : !source ⊧ σ}.
 
   Lemma add_spec_ok : verify[source] "add(int, int)".
-  Proof.
+  Proof using MOD.
     verify_spec. go.
   Qed.
 
   Lemma add_unsigned_spec_ok : verify[source] "add(unsigned, unsigned)".
-  Proof. verify_spec. go. Qed.
+  Proof using MOD. verify_spec. go. Qed.
 End with_cpp.
 
 (*|
@@ -123,7 +123,7 @@ Section with_cpp.
   Context `{MOD : !source ⊧ σ}.
 
   Lemma swap_ok : verify[source] swap_spec.
-  Proof. verify_spec. go. Qed.
+  Proof using MOD. verify_spec. go. Qed.
 End with_cpp.
 
 (*| Again, the automation can solve this goal on its own.
@@ -146,5 +146,5 @@ Section with_cpp.
   Context `{MOD : !source ⊧ σ}.
 
   Example not_enough_resources_swap_not_ok : verify[source] not_enough_resources_swap_spec.
-  Proof. verify_spec. go. Fail Qed. Abort.
+  Proof using MOD. verify_spec. go. Fail Qed. Abort.
 End with_cpp.
