@@ -51,7 +51,7 @@ The `\post emp` tells you that the function doesn't return any {{ "resource" | t
 Now, we can set up the verification by posing a `Lemma`.
 |*)
 Lemma test_ok : verify[source] "test()".
-Proof.
+Proof using MOD.
 (*|
 This sets up a theorem for our function that states that the function satisfies the specification, and that invoking the function
 as specified will not produce any {{ "undefined behavior" | terminology }}.

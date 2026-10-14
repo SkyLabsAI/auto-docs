@@ -39,7 +39,7 @@ cpp.spec "cond(bool, int, int)" with
 We start off the proof in the usual way.
 |*)
 Goal verify[source] "cond(bool, int, int)".
-Proof.
+Proof using MOD.
   verify_spec; go.
 (*
   _ : PostCond
@@ -91,7 +91,7 @@ Qed.
 We can also chain using a `;`, i.e. `wp_if; go.`.
 |*)
 Goal verify[source] "cond(bool, int, int)".
-Proof.
+Proof using MOD.
   verify_spec; go.
   wp_if; go.
 Qed.
@@ -103,7 +103,7 @@ In cases such as this one, where the two branches of the `if` do not re-join bef
 To tell the automation to do this automatically, we can use a hint.
 |*)
 Goal verify[source] "cond(bool, int, int)".
-Proof.
+Proof using MOD.
   verify_spec; go.
   go using smash_delayed_case_no_join_B.
 Qed.
@@ -114,7 +114,7 @@ This avoids the case split when the rest of the code might be difficult, or expe
 If we want the automation to always perform the case splits for us, we can use the unguarded hint `smash_delayed_case_B` in a similar way.
 |*)
 Goal verify[source] "cond(bool, int, int)".
-Proof.
+Proof using MOD.
   verify_spec; go.
   go using smash_delayed_case_B.
 Qed.

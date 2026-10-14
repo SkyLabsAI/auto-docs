@@ -48,7 +48,7 @@ Section with_cpp.
       \post[Vint (x + y)] emp).
 
   Lemma add_ok : verify[main_cpp.source] add_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "doubled(int)" as doubled_spec with
       (\arg{n} "n" (Vint n)
@@ -56,7 +56,7 @@ Section with_cpp.
        \post[Vint (2 * n)] emp).
 
   Lemma doubled_ok : verify[main_cpp.source] doubled_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "quadruple(int)" as quadruple_spec with
       (\arg{n} "n" (Vint n)
@@ -64,7 +64,7 @@ Section with_cpp.
        \post[Vint (4 * n)] emp).
 
   Lemma quadruple_ok : verify[main_cpp.source] quadruple_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "abs(int)" as abs_spec with
       (\arg{n} "n" (Vint n)
@@ -73,7 +73,7 @@ Section with_cpp.
 
 
   Lemma abs_ok : verify[main_cpp.source] abs_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   (*| ### Pointers and Simple Ownership |*)
 
@@ -83,7 +83,7 @@ Section with_cpp.
        \post[Vint v] emp).
 
   Lemma read_ok : verify[main_cpp.source] read_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "quadruple_mem(int*)" as quadruple_mem_spec with
      (\arg{p} "p" (Vptr p)
@@ -92,7 +92,7 @@ Section with_cpp.
       \post[Vint $ 4 * v] emp).
 
   Lemma quadruple_mem_ok : verify[main_cpp.source] quadruple_mem_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "abs_mem(int*)" as abs_mem_spec with
      (\arg{p} "p" (Vptr p)
@@ -101,7 +101,7 @@ Section with_cpp.
       \post[Vint $ Z.abs v] emp).
 
   Lemma abs_mem_ok : verify[main_cpp.source] abs_mem_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   (*| ### Writing to Memory |*)
 
@@ -112,7 +112,7 @@ Section with_cpp.
        \post p |-> intR 1$m (1 + v)).
 
   Lemma incr_ok : verify[main_cpp.source] incr_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "zero(int*)" as zero_spec with
       (\arg{p} "p" (Vptr p)
@@ -120,7 +120,7 @@ Section with_cpp.
        \post p |-> intR 1$m 0).
 
   Lemma zero_ok : verify[main_cpp.source] zero_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "inplace_double(int*)" as inplace_double_spec with
       (\arg{p} "p" (Vptr p)
@@ -129,7 +129,7 @@ Section with_cpp.
        \post p |-> intR 1$m (2 * v)).
 
   Lemma inplace_double_ok : verify[main_cpp.source] inplace_double_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "add_mem(unsigned int*, unsigned int*)" as add_mem_spec with (
     \arg{p} "p" (Vptr p)
@@ -141,7 +141,7 @@ Section with_cpp.
   ).
 
   Lemma add_mem_ok : verify[main_cpp.source] add_mem_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 
   cpp.spec "swap(unsigned int*, unsigned int*)" as swap_spec with (
     \arg{p} "p" (Vptr p)
@@ -152,7 +152,7 @@ Section with_cpp.
   ).
 
   Lemma swap_ok : verify[main_cpp.source] swap_spec.
-  Proof. verify_spec; go. Qed.
+  Proof using MOD. verify_spec; go. Qed.
 End with_cpp.
 
 (*| ### Aggregates |*)
