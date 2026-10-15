@@ -17,6 +17,7 @@
 import path from "path";
 
 export default function (eleventyConfig) {
+	const withPathPrefix = eleventyConfig.getFilter("url");
 	// Apply to all HTML output in your project
 	eleventyConfig.htmlTransformer.addUrlTransform(
 		"html",
@@ -29,6 +30,11 @@ export default function (eleventyConfig) {
 				|| urlInMarkup.startsWith("//")
 			) {
 				return urlInMarkup;
+			}
+
+			// 404.html is served for missing URLs at any depth, so its links stay absolute
+			if (this.url === "/404.html") {
+				return withPathPrefix(urlInMarkup);
 			}
 
 			// Get base directory path (keep trailing slash for index pages)
