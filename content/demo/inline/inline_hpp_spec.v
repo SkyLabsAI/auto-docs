@@ -11,6 +11,8 @@ Import auto_frac.
 
 #[local] Open Scope Z_scope.
 
+#[local] Set Warnings "-sl-transparent-constants".
+
 (*| In in some instances, the most natural reasoning principle for a
 function is simply to unfold it. In this case, we can use the `inline`
 specification to the `cpp.spec` command to generate an specification
