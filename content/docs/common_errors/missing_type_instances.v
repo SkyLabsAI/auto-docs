@@ -40,7 +40,7 @@ Section with_cpp.
 This proof gets stuck on the following goal:
  |*)
 Lemma test_ok : verify[source] "test(C)".
-Proof.
+Proof using MOD.
   verify_spec.
   go.
 (*|
