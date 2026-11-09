@@ -33,7 +33,7 @@ NES.Begin std.forward_list.
 
   Notation N := "std::__1::forward_list<int, std::__1::allocator<int>>"%cpp_name.
   Notation T := "std::__1::forward_list<int, std::__1::allocator<int>>"%cpp_type.
-  Goal T = Tnamed N. done. Abort.
+  Goal T = Tnamed N. Proof. done. Abort.
 
   (* The name of the iterator type. *)
   Notation itN := "std::__1::__forward_list_iterator<std::__1::__forward_list_node<int, void*>*>"%cpp_name.
