@@ -1,7 +1,7 @@
 Abbreviation primR := @prim.primR
 Expands to: Abbreviation skylabs.lang.cpp.logic.heap_pred.primR
 Declared in
-library skylabs.lang.cpp.logic.heap_pred, line 112, characters 0-29
+library skylabs.lang.cpp.logic.heap_pred, line 113, characters 0-29
 
 primR.body :
 ∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
@@ -26,7 +26,7 @@ Abbreviation wcharR q v := (primR "wchar_t" q (Vchar v))
 Abbreviation uninitR := @uninit.uninitR
 Expands to: Abbreviation skylabs.lang.cpp.logic.heap_pred.uninitR
 Declared in
-library skylabs.lang.cpp.logic.heap_pred, line 108, characters 0-35
+library skylabs.lang.cpp.logic.heap_pred, line 109, characters 0-35
 
 uninitR.body :
 ∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
@@ -36,11 +36,11 @@ uninitR.body is not universe polymorphic
 Arguments uninitR.body {thread_info _Σ Σ σ} ty%_cpp_type_scope q%_cQp_scope
 Expands to: Constant skylabs.lang.cpp.logic.heap_pred.uninit.uninitR.body
 Declared in
-library skylabs.lang.cpp.logic.heap_pred.uninit, line 23, characters 0-111
+library skylabs.lang.cpp.logic.heap_pred.uninit, line 24, characters 0-111
 Abbreviation anyR := @any.anyR
 Expands to: Abbreviation skylabs.lang.cpp.logic.heap_pred.anyR
 Declared in
-library skylabs.lang.cpp.logic.heap_pred, line 113, characters 0-26
+library skylabs.lang.cpp.logic.heap_pred, line 114, characters 0-26
 
 anyR.body :
 ∀ {thread_info : biIndex} {_Σ : gFunctors} {Σ : cpp_logic thread_info _Σ},
@@ -50,4 +50,4 @@ anyR.body is not universe polymorphic
 Arguments anyR.body {thread_info _Σ Σ σ} ty%_cpp_type_scope q%_cQp_scope
 Expands to: Constant skylabs.lang.cpp.logic.heap_pred.any.anyR.body
 Declared in
-library skylabs.lang.cpp.logic.heap_pred.any, line 30, characters 0-129
+library skylabs.lang.cpp.logic.heap_pred.any, line 31, characters 0-129
