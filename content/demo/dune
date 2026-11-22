@@ -10,27 +10,28 @@
  ; (package rocq-skylabs-cpp-demo) ; avoid installing
  (generate_project_file)
  (theories
-  Stdlib
-  Ltac2
-  Lens
-  Lens.Elpi
-  stdpp
-  iris
-  Equations
-  Equations.Prop
-  Equations.Type
-  elpi
-  elpi_elpi
-  elpi.apps.locker
-  elpi.apps.NES
-  skylabs
-  skylabs.cpp.stdlib
+  rocq-stdlib
+  rocq-core.ltac2
+  rocq-lens
+  rocq-lens-elpi
+  rocq-stdpp
+  rocq-iris
+  rocq-equations.core
+  rocq-equations.prop
+  rocq-equations.type
+  rocq-elpi
+  rocq-elpi.files
+  rocq-elpi.apps.locker
+  rocq-elpi.apps.NES
+  rocq-skylabs-auto-cpp
+  rocq-skylabs-cpp-stdlib
   ; transitive dependencies
-  Flocq elpi.apps.NES.elpi elpi.apps.derive elpi.apps.derive.elpi
-  elpi.apps.locker.elpi skylabs.auto.core skylabs.elpi.cpp skylabs.elpi.extra
-  skylabs.iris.extra skylabs.lang.cpp skylabs.lang.cpp.parser.plugin
-  skylabs.ltac2.extra skylabs.ltac2.logger skylabs.plib skylabs.prelude
-  skylabs.simp skylabs.upoly tactic_classes))
+  rocq-flocq rocq-elpi.apps.NES.files rocq-elpi.apps.derive
+  rocq-elpi.apps.derive.files rocq-elpi.apps.locker.files
+  rocq-skylabs-auto-core elpi-cpp elpi-extra rocq-skylabs-iris
+  rocq-skylabs-brick rocq-skylabs-brick-cpp-prog ltac2-extra
+  ltac2-logger rocq-skylabs-plib rocq-skylabs-prelude
+  rocq-skylabs-simp rocq-upoly rocq-tactic-classes))
 
 (include dune.inc)
 
